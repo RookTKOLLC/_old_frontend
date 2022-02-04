@@ -3,11 +3,12 @@ import { Link, useStaticQuery, graphql } from 'gatsby'
 import Header from '../sections/Header'
 import Footer from '../sections/Footer'
 import styled from '@emotion/styled'
+import NavBar from '../sections/NavBar'
 
 const Content = styled.main`
 min-height: calc(100vh - 150px);
 `
-const mainLayout = ({ pageTitle, children }) => {
+const MainLayout = ({ pageTitle, children }) => {
 
   const data = useStaticQuery(graphql`
   query {
@@ -23,6 +24,7 @@ const mainLayout = ({ pageTitle, children }) => {
     <div>
       <title>{pageTitle} | {data.site.siteMetadata.title}</title>
       <Header/>
+      <NavBar />
       <Content>
         {children}
       </Content>
@@ -31,4 +33,4 @@ const mainLayout = ({ pageTitle, children }) => {
 
   )
 }
-export default mainLayout
+export default MainLayout

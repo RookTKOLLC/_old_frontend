@@ -72,42 +72,46 @@ const Index = ({ data }) => {
       data.allMdx.nodes.map((node) => (
       <RecentPosts 
         key={node.id}>
-          <h2 css={css`
-            position: relative;
-            top: -2.8rem;
-            text-align: center;
-            background-color: #252423;
-            float: right;
-            text-shadow: 1px 1px 2px rgba(170, 170, 170, 0.623);
-            padding: 0rem 0.5rem;
-            border: 3px solid #ffa039;
-          `}><Link 
-          css={css`
-          color: #FFF;
-          font-family: 'Montserrat';
-          text-decoration: none;
-          &:hover{
+          <div css={css`
+            //background: linear-gradient(hsla(0,0%,94.9%,.05),hsla(0,0%,94.9%,.15) 25%,green),rgba(0,0,0,.4);//todo: add blur or remove div
+          `}> 
+            <h2 css={css`
+              position: relative;
+              top: -4rem;
+              text-align: center;
+              background-color: #252423;
+              float: right;
+              text-shadow: 1px 1px 2px rgba(170, 170, 170, 0.623);
+              padding: 0rem 0.5rem;
+              border: 3px solid #ffa039;
+            `}><Link 
+            css={css`
             color: #FFF;
-            box-shadow: none;
-          }
-          `}
-          to={"/" + node.slug}>{node.frontmatter.title.split(' ').slice(0,5).join(' ') + (node.frontmatter.title.split(' ').length > 5 ? '...' : '') }</Link></h2>
-          <h3 css={css`
-            margin-bottom: 0rem;
-          `}>{node.frontmatter.type}</h3>
-          <p css={css`
-            color: #999999;
-            margin: 0rem;
-            position: relative;
-            top: -1rem;
-            font-size: 0.8rem;
-          `}> Posted: {node.frontmatter.date}
-          </p>
-          <p>{node.excerpt}</p>
-          {/* <MDXRenderer>
+            font-family: 'Montserrat';
+            text-decoration: none;
+            &:hover{
+              color: #FFF;
+              box-shadow: none;
+            }
+            `}
+            to={"/" + node.slug}>{node.frontmatter.title.split(' ').slice(0,5).join(' ') + (node.frontmatter.title.split(' ').length > 5 ? '...' : '') }</Link></h2>
+            <h3 css={css`
+              margin-bottom: 0rem;
+            `}>{node.frontmatter.type}</h3>
+            <p css={css`
+              color: #999999;
+              margin: 0rem;
+              position: relative;
+              top: -1rem;
+              font-size: 0.8rem;
+            `}> Posted: {node.frontmatter.date}
+            </p>
+            <p>{node.excerpt}</p>
+            {/* <MDXRenderer>
 
-              {node.exc}
+                {node.exc}
           </MDXRenderer> */}
+          </div>
       </RecentPosts>
       ))
   }

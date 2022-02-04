@@ -3,36 +3,21 @@ import styled from '@emotion/styled'
 import { css } from '@emotion/react'
 import { Link } from 'gatsby'
 
-const Navbar = styled.div`
+const HeaderContainer = styled.div`
     background-color: #252423;
-    position: sticky;
+    //position: sticky;
     width:100%;
-    box-shadow: 0 2px 4px rgb(0 0 0 / 50%);
+    //box-shadow: 0 2px 4px rgb(0 0 0 / 50%);
     color: #ffffff;
 `
+
 const color = 'orange'
 export default function Header(){
 
-    const [scrollTop, setScrollTop] = useState(0);
-    const navItems = ['Propoganda','Projects', 'Goodies', 'About'  ] //this needs to be fixed for mobile //
-        
-    const onScroll = () => {
-        const docEl = document.documentElement;
-        const windowScrollHeight = docEl.scrollTop;
-        const currentWindowHeight = docEl.scrollHeight - docEl.clientHeight;
 
-        const scrolled = (windowScrollHeight / currentWindowHeight) * 100;
 
-        setScrollTop(scrolled)
-      };
-
-      useEffect(() => {
-          window.addEventListener("scroll", onScroll);
-
-          return () => window.removeEventListener('scroll', onScroll)
-      }, []);
         return (
-            <Navbar>
+            <HeaderContainer>
                 <Link to="/" css={css`
                     text-decoration: none;
                 `}>
@@ -81,28 +66,6 @@ export default function Header(){
                     font-family: 'Montserrat'
                 `}>Rook Takes King Out </h1>
                 </Link>
-                <ul css={css`
-                  list-style-type: none; 
-                  padding: 0px; 
-                  margin: 0; 
-                  display: flex;
-                  justify-content: center;
-                  `}>
-                    {navItems.map(value => <li css={css`padding: 0px 1rem`}>
-                        <Link to={'/' + value.toLowerCase()}
-                        css={css`
-                            text-decoration: none;
-                            color: #ffffff;
-                            font-family: "Playfair Display";
-                        `}> {value} </Link> 
-                    </li>)}
-                </ul>
-                <div css={css`
-                    width: ${scrollTop}%;
-                    background-color: #ffa039;
-                    height: 10px;
-                `}>
-                </div>
-            </Navbar>
+            </HeaderContainer>
         );
 }

@@ -51,7 +51,7 @@ export default function Footer(){
             <Latest>Stuff</Latest>
             <Contact>Stuf and more</Contact>
             <Newsletter>SUbscribe to me now</Newsletter>
-            <Copyright>test</Copyright>
+            <Copyright>© 2020-present RookTKO LLC. All Rights Reserved.</Copyright>
         </MainFooter>
     )
 }
