@@ -3,21 +3,15 @@ import styled from '@emotion/styled'
 import { css } from '@emotion/react'
 import { Link } from 'gatsby'
 
-const HeaderContainer = styled.div`
+const HeaderContainer = styled.section`
     background-color: #252423;
-    //position: sticky;
     width:100%;
-    //box-shadow: 0 2px 4px rgb(0 0 0 / 50%);
     color: #ffffff;
+    z-index:100;
 `
-
-const color = 'orange'
-export default function Header(){
-
-
-
+const Header = React.forwardRef((props, ref) => {
         return (
-            <HeaderContainer>
+            <HeaderContainer ref={ref}>
                 <Link to="/" css={css`
                     text-decoration: none;
                 `}>
@@ -68,4 +62,6 @@ export default function Header(){
                 </Link>
             </HeaderContainer>
         );
-}
+});
+
+export default Header;

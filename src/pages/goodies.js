@@ -4,7 +4,7 @@ import { graphql } from 'gatsby'
 import { MDXRenderer } from 'gatsby-plugin-mdx'
 import styled from '@emotion/styled'
 import { Link } from 'gatsby'
-import { Container } from '../components/sections/Container'
+import { Container } from '../components/layouts/Container'
 
 export const query = graphql`
   query {
@@ -22,7 +22,7 @@ export const query = graphql`
     }
   }
 `
-const LatestPosts = styled.div`
+const LatestPosts = styled.section`
     display: grid;
     grid-template-columns: 1fr min(80ch, calc(100% - 64px)) 1fr;
     grid-column-gap: 32px;

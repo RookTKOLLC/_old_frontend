@@ -1,10 +1,10 @@
 import * as React from 'react'
-import Layout from '../components/layouts/mainLayout'
+import Layout from '../components/layouts/MainLayout'
 import { graphql } from 'gatsby'
 import { MDXRenderer } from 'gatsby-plugin-mdx'
 import styled from '@emotion/styled'
 import { Link } from 'gatsby'
-import { Container } from '../components/sections/Container'
+import { Container } from '../components/layouts/Container'
 import { css, keyframes } from "@emotion/react"
 
 export const query = graphql`
@@ -54,7 +54,6 @@ const RecentPosts = styled.article`
 
 
 const Index = ({ data }) => {
-  console.log("thisis data:", data)
   return (
     <Layout pageTitle="My Blog Posts">
         <Container>
@@ -72,7 +71,7 @@ const Index = ({ data }) => {
       data.allMdx.nodes.map((node) => (
       <RecentPosts 
         key={node.id}>
-          <div css={css`
+          <section css={css`
             //background: linear-gradient(hsla(0,0%,94.9%,.05),hsla(0,0%,94.9%,.15) 25%,green),rgba(0,0,0,.4);//todo: add blur or remove div
           `}> 
             <h2 css={css`
@@ -111,7 +110,7 @@ const Index = ({ data }) => {
 
                 {node.exc}
           </MDXRenderer> */}
-          </div>
+          </section>
       </RecentPosts>
       ))
   }
