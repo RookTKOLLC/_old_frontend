@@ -1,4 +1,4 @@
-import {css } from '@nfront/global-styles';
+import { css } from '@emotion/react';
 
 const globalReset = css`
 /*! normalize.css v8.0.1 | MIT License | github.com/necolas/normalize.css */

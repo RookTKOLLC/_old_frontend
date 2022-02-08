@@ -22,12 +22,6 @@ module.exports = {
     "gatsby-transformer-remark", 
     "gatsby-transformer-sharp",
     {
-      resolve: `gatsby-plugin-global-styles`,
-      options: {
-        pathToConfigModule: `src/styles/globalStyles`
-      },
-    },
-    {
       resolve: 'gatsby-source-filesystem',
       options: {
         "name": "images",

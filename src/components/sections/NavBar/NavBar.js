@@ -16,7 +16,7 @@ const NavBarContainer = styled.section`
 
 const NavBarLinks = styled.ul`
     list-style-type: none; 
-    padding: 0px; 
+    padding: 0.4rem; 
     margin: 0; 
     display: flex;
     justify-content: center;
@@ -64,7 +64,7 @@ export default function NavBar(){
                         key={idx} 
                         css={css`padding: 0px 1rem`}
                     >
-                        <Link to={'/' + value.toLowerCase()}
+                        <Link to={'/' + `${value.toLowerCase()}`}
                         css={css`
                             text-decoration: none;
                             color: #ffffff;

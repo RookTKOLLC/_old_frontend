@@ -25,7 +25,7 @@ function SocialMediaNav({tween}) {
     //console.log('toggleNavDisplay3', toggleNavDisplay)
     const SocialMediaIcons = styled.section`
         background-color: rgba(255, 160, 57, 0.5);
-        padding-top: 1rem;
+        padding-top: 0.2rem;
         width: 100%;
         ul{
             display: flex;
@@ -45,7 +45,7 @@ function SocialMediaNav({tween}) {
             padding-right: 0.4rem;
         }
         position: ${props => props.tween ? 'sticky' : 'relative'};
-        top: -2.2rem;
+        top: -3rem;
         z-index: 10;
         //top: 4rem
         // background-color: ${props =>
@@ -76,7 +76,7 @@ function SocialMediaNav({tween}) {
             top: -1rem;
         }
         100%{
-            top:1.4rem;
+            top:3rem;
         }
     `
     // const tweenNav = props => props.toggleNavDisplay ?

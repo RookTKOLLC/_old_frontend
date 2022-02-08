@@ -1,5 +1,5 @@
 import * as React from 'react'
-import Layout from '../components/layouts/mainLayout'
+import Layout from '../components/layouts/MainLayout'
 import { graphql } from 'gatsby'
 import { MDXRenderer } from 'gatsby-plugin-mdx'
 import styled from '@emotion/styled'

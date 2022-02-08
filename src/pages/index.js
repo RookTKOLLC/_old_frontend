@@ -5,7 +5,7 @@ import { MDXRenderer } from 'gatsby-plugin-mdx'
 import styled from '@emotion/styled'
 import { Link } from 'gatsby'
 import { Container } from '../components/layouts/Container'
-import { css, keyframes } from "@emotion/react"
+import { Global, css, keyframes } from "@emotion/react"
 
 export const query = graphql`
   query {

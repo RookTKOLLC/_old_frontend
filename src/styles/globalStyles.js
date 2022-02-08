@@ -1,9 +1,9 @@
-import { createGlobalStyle } from '@nfront/global-styles';
-import { css } from '@nfront/global-styles';
+import { css } from '@emotion/react';
 import globalReset from './globalReset';
 import '@fontsource/montserrat/900.css'
 import "@fontsource/playfair-display/400.css"
 import "@fontsource/fira-sans-condensed/400.css"
+
 
 const globalTypography = css`
   * {
@@ -23,7 +23,7 @@ const globalTypography = css`
   }
 `
 
-const globalStyles = createGlobalStyle`
+const globalStyles = css`
   ${globalReset}
   ${globalTypography}
 `;
