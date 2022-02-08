@@ -23,16 +23,11 @@ export default function Post({ pageTitle, children }) {
         `)
     return (
         <>
-            <title>{pageTitle} | {data.site.siteMetadata.title}</title>
-            <Header />
-            <NavBar />
-            <SocialMediaNav />
             <Content>
                 <Container>
                     {children}
                 </Container>
             </Content>
-            <Footer />
         </>
     )
 }
