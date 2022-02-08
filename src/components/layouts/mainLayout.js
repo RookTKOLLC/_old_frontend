@@ -1,4 +1,4 @@
-import React, {useRef, useEffect, useState, createRef} from 'react'
+import React, {useRef, useEffect, useState, createRef, useMemo} from 'react'
 import { Link, useStaticQuery, graphql } from 'gatsby'
 import Header from '../sections/Header/Header'
 import Footer from '../sections/Footer'
@@ -12,14 +12,17 @@ min-height: calc(100vh - 150px);
 const MainLayout = ({ pageTitle, children }) => {
   const [headerVisibility, setHeaderVisibility] = useState(true)
   const [initLoad, setInitLoad] = useState(true)
-  console.log('headerVisibility', headerVisibility)
+  console.log('headerVisibility1', headerVisibility)
   const myRef = createRef();
-
+  console.log('myRef.current', myRef)
+  const memoMyRefCurrent = () => myRef.current;
+  const memoizedCurrent = useMemo(() => memoMyRefCurrent(), [])
   useEffect(() => {
     //console.log('myRef', myRef.current);
+    console.log("------------------MainLayout useEffect------------------------------------------")
     const observer = new IntersectionObserver((entries) => {
       const entry = entries[0];
-      console.log('headerVisibility', headerVisibility);
+      console.log('headerVisibility2', headerVisibility);
       console.log('entry.isIntersecting', entry.isIntersecting);
       if(entry.isIntersecting != headerVisibility && initLoad == true){
         setHeaderVisibility(entry.isIntersecting);
@@ -30,6 +33,8 @@ const MainLayout = ({ pageTitle, children }) => {
     console.log("MainLayout in observer")
   }, [])
   
+
+  //const memoHeaderVisbility = useMemo(() => returnHeaderVisibility(), [headerVisibility]);
   const data = useStaticQuery(graphql`
       query {
         site {

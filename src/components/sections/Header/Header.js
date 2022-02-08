@@ -10,6 +10,7 @@ const HeaderContainer = styled.section`
     z-index:100;
 `
 const Header = React.forwardRef((props, ref) => {
+    console.log('heade ref', ref)
         return (
             <HeaderContainer ref={ref}>
                 <Link to="/" css={css`

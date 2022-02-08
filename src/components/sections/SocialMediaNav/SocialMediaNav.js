@@ -7,7 +7,7 @@ import { Link } from 'gatsby'
 
 //const socialMediaDropDownEffect = (props) => typeof props.position === 'Number' ?
 
-export default function SocialMediaNav({tween}) {
+function SocialMediaNav({tween}) {
 
     const [toggleNavDisplay, setToggleNavDisplay] = useState(false)
     console.log('re-render')
@@ -25,7 +25,7 @@ export default function SocialMediaNav({tween}) {
     //console.log('toggleNavDisplay3', toggleNavDisplay)
     const SocialMediaIcons = styled.section`
         background-color: rgba(255, 160, 57, 0.5);
-        padding-top: 0.5rem;
+        padding-top: 1rem;
         width: 100%;
         ul{
             display: flex;
@@ -99,3 +99,4 @@ export default function SocialMediaNav({tween}) {
 }
 
 
+export default React.memo(SocialMediaNav)
