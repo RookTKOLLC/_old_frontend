@@ -34,26 +34,24 @@ const LatestPosts = styled.section`
 
 const Index = ({ data }) => {
   return (
-    <Layout pageTitle="My Blog Posts">
-        <Container>
-        <ul>
-        {       
-            data.allMdx.nodes.map((node) => (
+    <Container>
+      <ul>
+        {
+          data.allMdx.nodes.map((node) => (
             <article key={node.id}>
-                <h2><Link to={"/" + node.slug}>{node.frontmatter.title}</Link></h2>
-                <p>Posted: {node.frontmatter.date}</p>
-                <p>Stuff</p>
-                <p>{node.excerpt}</p>
-                {/* <MDXRenderer>
+              <h2><Link to={"/" + node.slug}>{node.frontmatter.title}</Link></h2>
+              <p>Posted: {node.frontmatter.date}</p>
+              <p>Stuff</p>
+              <p>{node.excerpt}</p>
+              {/* <MDXRenderer>
    
                     {node.exc}
                 </MDXRenderer> */}
             </article>
-            ))
+          ))
         }
       </ul>
-        </Container>
-    </Layout>
+    </Container>
   )
 }
 export default Index

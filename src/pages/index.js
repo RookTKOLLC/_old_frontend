@@ -55,7 +55,7 @@ const RecentPosts = styled.article`
 
 const Index = ({ data }) => {
   return (
-    <Layout pageTitle="My Blog Posts">
+    <div pageTitle="My Blog Posts">
         <Container>
           {/* Todo: add hero??
            Todo: add other info? */}
@@ -116,7 +116,7 @@ const Index = ({ data }) => {
   }
 </ul>
         </Container>
-    </Layout>
+    </div>
   )
 }
 export default Index
