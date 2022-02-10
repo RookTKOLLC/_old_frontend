@@ -2,4 +2,4 @@
     "componentChunkName": "component---src-posts-devblog-rnr-blog-1-mdx",
     "path": "/devblog/rnr/blog_1/",
     "result": {"pageContext":{"frontmatter":{"title":"My First Post","slug":"test-post","type":"News","subType":"RNR","date":"2021-07-23"}}},
-    "staticQueryHashes": ["3159585216"]}
+    "staticQueryHashes": []}

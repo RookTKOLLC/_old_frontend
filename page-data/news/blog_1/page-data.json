@@ -2,4 +2,4 @@
     "componentChunkName": "component---src-posts-news-blog-1-mdx",
     "path": "/news/blog_1/",
     "result": {"pageContext":{"frontmatter":{"title":"My First Post and its a very very very very very long one","slug":"test-post1","type":"News","subType":"RNR","date":"1991-07-23"}}},
-    "staticQueryHashes": ["3159585216"]}
+    "staticQueryHashes": []}

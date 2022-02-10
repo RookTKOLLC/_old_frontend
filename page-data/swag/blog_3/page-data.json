@@ -2,4 +2,4 @@
     "componentChunkName": "component---src-posts-swag-blog-3-mdx",
     "path": "/swag/blog_3/",
     "result": {"pageContext":{"frontmatter":{"title":"Yet Another Post","path":"/bb","type":"Swag","subType":"RNR","date":"1600-07-25"}}},
-    "staticQueryHashes": ["3159585216"]}
+    "staticQueryHashes": []}
