@@ -4,7 +4,7 @@ import { css } from '@emotion/react'
 import { Link } from 'gatsby'
 
 const HeaderContainer = styled.section`
-    background-color: #252423;
+    background-color: #252423 !important;
     width:100%;
     color: #ffffff;
     z-index:100;

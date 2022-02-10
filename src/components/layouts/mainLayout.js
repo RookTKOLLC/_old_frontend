@@ -14,8 +14,7 @@ const Content = styled.main`
 min-height: calc(100vh - 150px);
 `
 const Background = styled.div`
-  background-image: linear-gradient(0deg, rgba(255,255,255,0.85) 50%,  rgba(255,255,255,0) 100%), 
-    url(${BackgroundImage});
+  background-image: linear-gradient(0deg, rgba(255,255,255,1) 10%,  rgba(255,255,255,0) 100%), url(${BackgroundImage});
   background-position: -10% -15%;
   background-repeat: repeat;
   background-size: auto;
@@ -78,7 +77,7 @@ const MainLayout = ({ children }) => {
     console.log('h', headerVisibility);
   return (
     <Background>
-      <title> TODO | {data.site.siteMetadata.title}</title>
+      <title>{data.site.siteMetadata.title}</title>
       <Header ref={myRef}/>
       <NavBar />
       <SocialMediaNav tween={headerVisibility}/>

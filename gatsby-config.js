@@ -1,4 +1,5 @@
 module.exports = {
+  pathPrefix: "/frontend",
   siteMetadata: {
     title: `RookTKO`,
     siteUrl: `https://www.rooktko.com`
@@ -7,7 +8,7 @@ module.exports = {
   {
     resolve: 'gatsby-plugin-manifest',
     options: {
-      "icon": "src/images/icon.png"
+      "icon": "src/media/images/icon.png"
     }
   }, 
   {
@@ -21,11 +22,12 @@ module.exports = {
     "gatsby-plugin-sharp", 
     "gatsby-transformer-remark", 
     "gatsby-transformer-sharp",
+    `gatsby-plugin-fontawesome-css`,
     {
       resolve: 'gatsby-source-filesystem',
       options: {
         "name": "images",
-        "path": `${__dirname}/src/images/`
+        "path": `${__dirname}/src/media/images/`
       },
       __key: "images"
     }, 
