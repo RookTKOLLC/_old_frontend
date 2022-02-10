@@ -47,7 +47,14 @@ const RecentPosts = styled.article`
 const Index = ({ data }) => {
   return (
 
-    <Container>
+    <Container css={css`
+      display: grid;
+      grid-template-columns: 1fr min(80ch, calc(100% - 64px)) 1fr;
+      grid-column-gap: 32px;
+      & > *{
+          grid-column: 2;
+      }
+    `}>
       {/* Todo: add hero??
            Todo: add other info? */}
       <ul css={css`

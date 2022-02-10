@@ -2,9 +2,13 @@ import React, { useEffect, useState } from 'react'
 import styled from '@emotion/styled'
 import { css, keyframes } from '@emotion/react'
 import { Link } from 'gatsby'
-
-
-
+import { FiInstagram } from '@react-icons/all-files/fi/FiInstagram'
+import { FaFacebookSquare} from '@react-icons/all-files/fa/FaFacebookSquare'
+import { ImSteam } from '@react-icons/all-files/im/ImSteam'
+import { FaTwitter } from '@react-icons/all-files/fa/FaTwitter'
+import { SiTiktok } from '@react-icons/all-files/si/SiTiktok'
+import { FaItchIo } from '@react-icons/all-files/fa/FaItchIo'
+import { GrLinkedin } from '@react-icons/all-files/gr/GrLinkedin'
 //const socialMediaDropDownEffect = (props) => typeof props.position === 'Number' ?
 
 function SocialMediaNav({tween}) {
@@ -97,15 +101,16 @@ function SocialMediaNav({tween}) {
     return (
         <SocialMediaIcons tween = {toggleNavDisplay} >
             <ul>
-                <ol><a href="">Facebook</a></ol>
-                <ol><a href="">Insta</a></ol>
-                <ol><a href="">Steam</a></ol>
-                <ol><a href="">IndieDb</a></ol>
-                <ol><a href="">Twitter</a></ol>
+                <ol><a href=""><FaFacebookSquare /></a></ol>
+                <ol><a href=""><FaTwitter /></a></ol>
+                <ol><a href=""><FiInstagram/> </a></ol>
+                <ol><a href=""><SiTiktok/> </a></ol>
+                <ol><a href=""><ImSteam /></a></ol>
+                <ol><a href=""><FaItchIo /></a></ol>
+                <ol><a href=""><GrLinkedin /></a></ol>
             </ul>
         </SocialMediaIcons>
     )
 }
-
 
 export default React.memo(SocialMediaNav)

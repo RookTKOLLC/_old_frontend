@@ -3,11 +3,11 @@ import styled from '@emotion/styled'
 import { css } from '@emotion/react'
 import { Link } from 'gatsby'
 
-const HeaderContainer = styled.section`
+const HeaderContainer = styled.div`
     background-color: #252423 !important;
     width:100%;
     color: #ffffff;
-    z-index:100;
+    //z-index:1000;
 `
 const Header = React.forwardRef((props, ref) => {
 

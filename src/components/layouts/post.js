@@ -12,15 +12,15 @@ const Content = styled.main`
 min-height: calc(100vh - 150px);
 `
 export default function Post({children }) {
-    const data = useStaticQuery(graphql`
-        query {
-            site {
-                siteMetadata {
-                title
-                }
-            }
-        }
-        `)
+    // const data = useStaticQuery(graphql`
+    //     query {
+    //         site {
+    //             siteMetadata {
+    //             title
+    //             }
+    //         }
+    //     }
+    //     `)
     return (
         <>
             <Content>
