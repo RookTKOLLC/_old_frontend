@@ -10,6 +10,14 @@ const HeaderContainer = styled.section`
     z-index:100;
 `
 const Header = React.forwardRef((props, ref) => {
+
+    /** 
+   * Uses matchMedia to use CSS media queries params
+   * to get a retrieve a boolean value based on if its
+   * in mobile or pc width size
+   */
+   const mql = window.matchMedia('(max-width: 600px)')
+   let mobileView = mql.matches;
     console.log('heade ref', ref)
         return (
             <HeaderContainer ref={ref}>
@@ -58,8 +66,11 @@ const Header = React.forwardRef((props, ref) => {
                       &:hover{
                         color: #ffa039;
                     }
-                    font-family: 'Montserrat'
-                `}>Rook Takes King Out </h1>
+                    font-family: 'Montserrat';
+                    @media (max-width:600px){
+                        font-size: 0.8rem;
+                    };
+                `}>RookTKO</h1>
                 </Link>
             </HeaderContainer>
         );

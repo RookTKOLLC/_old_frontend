@@ -7,6 +7,7 @@ import { Link } from 'gatsby'
 import { Container } from '../components/layouts/Container'
 import { Global, css, keyframes } from "@emotion/react"
 
+
 export const query = graphql`
   query {
     allMdx(sort: {fields: frontmatter___date, order: DESC}) {
@@ -31,50 +32,56 @@ const borderAnimation = keyframes`
 `
 const RecentPosts = styled.article`
   margin-bottom: 3em;
-  padding: 0.2em 2em;
   width: 100%;
-  background: linear-gradient(90deg, #ffa039 60%, transparent 50%), 
-              linear-gradient(90deg, #ffa039 60%, transparent 50%), 
-              linear-gradient(0deg, #ffa039 60%, transparent 50%), 
-              linear-gradient(0deg, #ffa039 60%, transparent 50%);
-  background-repeat: repeat-x, repeat-x, repeat-y, repeat-y;
-  background-size: 6px 3px, 6px 3px, 3px 6px, 3px 6px;
-  background-position: 5% 0%, 98% 100%, 0% 100%, 100% 0px;
-  border-radius: 2px;
-  transition: all 300ms ease-in-out; 
-
-  &:hover{
-    animation: ${borderAnimation} 16s linear infinite alternate ;
-    transform: scale(1.02);
-  	-webkit-box-shadow: rgba(0, 0, 0, 0.25) 0px 14px 28px, rgba(0, 0, 0, 0.22) 0px 10px 10px;
-	   -moz-box-shadow: rgba(0, 0, 0, 0.25) 0px 14px 28px, rgba(0, 0, 0, 0.22) 0px 10px 10px;
-     box-shadow: rgba(0, 0, 0, 0.25) 0px 14px 28px, rgba(0, 0, 0, 0.22) 0px 10px 10px;
-  }
+  background: linear-gradient(0deg, rgba(255,255,255, 0.2) 0%, rgba(255,255,255, 0) 50%);
+  //border-radius: 16px;
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(5px);
+  -webkit-backdrop-filter: blur(5px);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  
 `
 
 
 const Index = ({ data }) => {
   return (
-    <div pageTitle="My Blog Posts">
-        <Container>
-          {/* Todo: add hero??
+
+    <Container>
+      {/* Todo: add hero??
            Todo: add other info? */}
-  <ul css={css`
+      <ul css={css`
     margin: 0px;
     padding: 0px;
-    padding-right:3rem;
+    //padding-right:3rem;
     &:first-of-type {
       margin-top: 3em;
     }
   `}>
-  {       
-      data.allMdx.nodes.map((node) => (
-      <RecentPosts 
-        key={node.id}>
-          <section css={css`
-            //background: linear-gradient(hsla(0,0%,94.9%,.05),hsla(0,0%,94.9%,.15) 25%,green),rgba(0,0,0,.4);//todo: add blur or remove div
-          `}> 
-            <h2 css={css`
+        {
+          data.allMdx.nodes.map((node) => (
+            <RecentPosts
+              key={node.id}>
+              <section css={css`
+                background: linear-gradient(90deg, #ffa039 60%, transparent 50%), 
+                  linear-gradient(90deg, #ffa039 60%, transparent 50%), 
+                  linear-gradient(0deg, #ffa039 60%, transparent 50%), 
+                  linear-gradient(0deg, #ffa039 60%, transparent 50%);
+                background-repeat: repeat-x, repeat-x, repeat-y, repeat-y;
+                background-size: 6px 3px, 6px 3px, 3px 6px, 3px 6px;
+                background-position: 5% 0%, 98% 100%, 0% 100%, 100% 0px;
+                border-radius: 2px;
+                transition: all 300ms ease-in-out; 
+
+                &:hover{
+                  animation: ${borderAnimation} 16s linear infinite alternate ;
+                  //transform: scale(1);
+                  -webkit-box-shadow: rgba(0, 0, 0, 0.25) 0px 14px 28px, rgba(0, 0, 0, 0.22) 0px 10px 10px;
+                  -moz-box-shadow: rgba(0, 0, 0, 0.25) 0px 14px 28px, rgba(0, 0, 0, 0.22) 0px 10px 10px;
+                  box-shadow: rgba(0, 0, 0, 0.25) 0px 14px 28px, rgba(0, 0, 0, 0.22) 0px 10px 10px;
+                };
+                padding: 0.2em 2em;
+          `}>
+                <h2 css={css`
               position: relative;
               top: -4rem;
               text-align: center;
@@ -83,8 +90,8 @@ const Index = ({ data }) => {
               text-shadow: 1px 1px 2px rgba(170, 170, 170, 0.623);
               padding: 0rem 0.5rem;
               border: 3px solid #ffa039;
-            `}><Link 
-            css={css`
+            `}><Link
+                    css={css`
             color: #FFF;
             font-family: 'Montserrat';
             text-decoration: none;
@@ -93,30 +100,31 @@ const Index = ({ data }) => {
               box-shadow: none;
             }
             `}
-            to={"/" + node.slug}>{node.frontmatter.title.split(' ').slice(0,5).join(' ') + (node.frontmatter.title.split(' ').length > 5 ? '...' : '') }</Link></h2>
-            <h3 css={css`
+                    to={"/" + node.slug}>{node.frontmatter.title.split(' ').slice(0, 5).join(' ') + (node.frontmatter.title.split(' ').length > 5 ? '...' : '')}</Link></h2>
+                <h3 css={css`
+                z-index:100;
               margin-bottom: 0rem;
             `}>{node.frontmatter.type}</h3>
-            <p css={css`
+                <p css={css`
               color: #999999;
               margin: 0rem;
               position: relative;
               top: -1rem;
               font-size: 0.8rem;
             `}> Posted: {node.frontmatter.date}
-            </p>
-            <p>{node.excerpt}</p>
-            {/* <MDXRenderer>
+                </p>
+                <p>{node.excerpt}</p>
+                {/* <MDXRenderer>
 
                 {node.exc}
           </MDXRenderer> */}
-          </section>
-      </RecentPosts>
-      ))
-  }
-</ul>
-        </Container>
-    </div>
+              </section>
+            </RecentPosts>
+          ))
+        }
+      </ul>
+    </Container>
+
   )
 }
 export default Index

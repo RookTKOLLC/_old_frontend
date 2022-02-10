@@ -12,6 +12,9 @@ const NavBarContainer = styled.section`
     color: #ffffff;
     top: 0px;
     z-index:100;
+    @media (max-width: 620px) {
+        display:none;
+    }
 `
 
 const NavBarLinks = styled.ul`
