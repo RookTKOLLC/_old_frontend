@@ -1,0 +1,1 @@
+{"version":3,"file":"component---src-pages-index-1-js-a4b3a65f21c0d692b730.js","mappings":"8LAEe,SAASA,IACtB,OAAO","sources":["webpack://rook-tko-frontend/./src/pages/index1.js"],"sourcesContent":["import React from \"react\"\r\n\r\nexport default function Home() {\r\n  return <div>Hello world!</div>\r\n}"],"names":["Home"],"sourceRoot":""}
