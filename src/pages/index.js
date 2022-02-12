@@ -13,7 +13,7 @@ export const query = graphql`
   query {
     allMdx(sort: {fields: frontmatter___date, order: DESC}) {
       nodes {
-        excerpt(pruneLength: 150)
+        excerpt(pruneLength: 180)
         frontmatter {
           date(formatString: "MMMM D, YYYY")
           title
@@ -29,20 +29,23 @@ export const query = graphql`
 const borderAnimation = keyframes`
   to {
     background-position: 50% 0%, 50% 100%, 0% 0%, 100% 100%;
+
   }
 `
 const RecentPosts = styled.article`
+  position: relative;
   margin-bottom: 3em;
-  width: 100%;
-  //background: linear-gradient(0deg, rgba(255,0,0, 1) 0%, rgba(255,0,0, 0) 50%);
-  //border-radius: 16px;
-  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+  //width: 100%;
+  //background: linear-gradient(0deg, rgba(255,255,255, 1) 0%, rgba(255,255,255, 0) 50%);
+  border-radius: 16px;
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.2);
   backdrop-filter: blur(2px);
   -webkit-backdrop-filter: blur(2px);
   border: 1px solid rgba(255, 255, 255, 0.3);
-  
 `
+const Wrapper = styled.section`
 
+`
 
 const Index = ({ data }) => {
   return (
@@ -70,14 +73,14 @@ const Index = ({ data }) => {
             <RecentPosts
               key={node.id}>
               <section css={css`
-                //background-image: url(${BackgroundMedia});
+               position:relative;
                 cursor: pointer;
                 &:before{
                   content:"";
-                  background: linear-gradient(90deg, #ffa039 60%, transparent 50%), 
-                  linear-gradient(90deg, #ffa039 60%, transparent 50%), 
-                  linear-gradient(0deg, #ffa039 60%, transparent 50%), 
-                  linear-gradient(0deg, #ffa039 60%, transparent 50%);
+                  background: linear-gradient(90deg, rgba(255,160,57,1) 60%, transparent 50%), 
+                  linear-gradient(90deg, rgba(255,160,57,1) 60%, transparent 50%), 
+                  linear-gradient(0deg, rgba(255,160,57,1) 60%, transparent 50%), 
+                  linear-gradient(0deg, rgba(255,160,57,1) 60%, transparent 50%);
                 background-repeat: repeat-x, repeat-x, repeat-y, repeat-y;
                 background-size: 6px 3px, 6px 3px, 3px 6px, 3px 6px;
                 background-position: 5% 0%, 98% 100%, 0% 100%, 100% 0px;
@@ -90,11 +93,12 @@ const Index = ({ data }) => {
                 bottom:0;
                 }
                 &:hover::before{
-                  animation: ${borderAnimation} 16s linear infinite alternate ;
+                  animation: ${borderAnimation} 16s linear infinite alternate;
                   //transform: scale(1);
                   -webkit-box-shadow: rgba(0, 0, 0, 0.25) 0px 14px 28px, rgba(0, 0, 0, 0.22) 0px 10px 10px;
                   -moz-box-shadow: rgba(0, 0, 0, 0.25) 0px 14px 28px, rgba(0, 0, 0, 0.22) 0px 10px 10px;
                   box-shadow: rgba(0, 0, 0, 0.25) 0px 14px 28px, rgba(0, 0, 0, 0.22) 0px 10px 10px;
+
                 };
           `}
           onClick={event => {
@@ -102,22 +106,33 @@ const Index = ({ data }) => {
             navigate("/" + node.slug)
           }}
           >
-            <section css={css`
+            <Wrapper 
+            
+            css={css`
+            //border: 2px solid red;
                 content: "";
-                &:hover::before{
-                  background: linear-gradient(0deg, rgba(255,255,255, 1) 50%, rgba(255,255,255, 0) 100%), url(${BackgroundMedia});
+                &:hover:before{
+                  background-color: white;
+                  background: linear-gradient(0deg, rgba(255,255,255, 1) 50%, rgba(255,255,255, 0.5) 80%, rgba(255,255,255, 0) 100%), url(${BackgroundMedia});
                   background-size: cover;
                   background-repeat: no-repeat;
                   content:"";
-                  top: 0px;
+                  top:3rem;
                   left: 0px;
                   right: 0px;
                   bottom: 0px;
                   position: absolute;
-                  opacity: 1;
-                  z-index:-1;
-                  
-                };              
+                  opacity: 0.8;
+                  z-index:0;
+                };
+
+                // //   @supports (mix-blend-mode: hue) {
+                // //     opacity: 1;
+                // //     mix-blend-mode: color;
+                // //     mix-blend-mode: hard-light;
+                // //     mix-blend-mode: hue;
+                // // }
+                // };              
             `}>
 
                 <heading css={css`
@@ -129,7 +144,7 @@ const Index = ({ data }) => {
 
               
                   <h2 css={css`
-                    // position: relative;
+                    position: relative;
                     //top: -3rem;
                     text-align: center;
                     background-color: #252423;
@@ -138,15 +153,15 @@ const Index = ({ data }) => {
                     padding: 0rem 0.5rem;
                     border: 3px solid #ffa039;
                     margin: 0rem;
-                    position: absolute;
-                    top: -1.5rem;
+                    //position: absolute;
+                    //top: -1.5rem;
                     right: 0rem;
                     color: #FFF;
                     font-family: 'Montserrat';
                     text-decoration: none;
                     &:hover{
                       color: #FFF;
-                      box-shadow: none;
+                      //box-shadow: none;
                     }
                     //padding: 0.2em 2em;
                   `}>
@@ -173,19 +188,26 @@ const Index = ({ data }) => {
               position: relative;
               //top: -1rem;
               font-size: 0.8rem;
-              padding: 0rem 2rem;
+              padding: 0rem 2rem 1rem;
+              line-height: 0;
             `}> Posted: {node.frontmatter.date}
                 </p>
                 <p css={css`
-                  padding: 0.2em 2em;
+                  padding: 0.2rem 2rem  2rem;
                   margin:0px;
                   position: relative;
-                `}>{node.excerpt}</p>
+                `}>{node.excerpt}
+                <br />
+                <span>
+                  Read More -&gt;
+                </span>
+                
+                </p>
                 {/* <MDXRenderer>
 
                 {node.exc}
           </MDXRenderer> */}
-          </section>
+          </Wrapper>
               </section>
             </RecentPosts>
           ))

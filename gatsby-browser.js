@@ -1,9 +1,9 @@
 import React from "react";
 import './src/styles/globalReset.css'
 import './src/styles/theme.css'
-// import globalStyles from "./src/styles/globalStyles";
-// import { css } from '@emotion/react';
-// import globalReset from "./src/styles/globalReset";
+import globalStyles from "./src/styles/globalStyles";
+import { css } from '@emotion/react';
+import globalReset from "./src/styles/globalReset";
 import MainLayout from './src/components/layouts/MainLayout'
 
 export const wrapRootElement = ({ element, props }) => {
