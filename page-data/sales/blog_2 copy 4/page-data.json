@@ -1,5 +1,5 @@
 {
     "componentChunkName": "component---src-posts-sales-blog-2-copy-4-mdx",
     "path": "/sales/blog_2 copy 4/",
-    "result": {"pageContext":{"frontmatter":{"title":"yet another Post","type":"Sales","subType":"RNR","date":"1800-07-24"}}},
+    "result": {"pageContext":{"frontmatter":{"title":"yet another Post","type":"Sales","subType":"RNR","headingImage":"dropkick_demo.gif","date":"1800-07-24"}}},
     "staticQueryHashes": []}
