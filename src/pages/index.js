@@ -1,12 +1,9 @@
 import * as React from 'react'
-import Layout from '../components/layouts/MainLayout'
 import { graphql } from 'gatsby'
-import { MDXRenderer } from 'gatsby-plugin-mdx'
 import styled from '@emotion/styled'
-import { Link } from 'gatsby'
 import { Container } from '../components/layouts/Container'
-import { Global, css, keyframes } from "@emotion/react"
-import BackgroundMedia from '../media/images/treeent.gif'
+import {css, keyframes } from "@emotion/react"
+import BackgroundMedia from '../media/images/dropkick_demo.gif'
 import { navigate } from "gatsby"
 
 export const query = graphql`
@@ -18,6 +15,7 @@ export const query = graphql`
           date(formatString: "MMMM D, YYYY")
           title
           type
+
         }
         id
         body
@@ -37,7 +35,7 @@ const RecentPosts = styled.article`
   margin-bottom: 3em;
   //width: 100%;
   //background: linear-gradient(0deg, rgba(255,255,255, 1) 0%, rgba(255,255,255, 0) 50%);
-  border-radius: 16px;
+  border-radius: 8px;
   box-shadow: 0 4px 30px rgba(0, 0, 0, 0.2);
   backdrop-filter: blur(2px);
   -webkit-backdrop-filter: blur(2px);
@@ -47,7 +45,13 @@ const Wrapper = styled.section`
 
 `
 
+
+
 const Index = ({ data }) => {
+  // const [bgImage, setBgImage] = useState("")
+  // const im = import('../media/images/dropkick_demo.gif').then(image => {
+  //   setBgImage(image)
+  // });
   return (
 
     <Container css={css`
@@ -91,6 +95,7 @@ const Index = ({ data }) => {
                 left:0;
                 right:0;
                 bottom:0;
+                
                 }
                 &:hover::before{
                   animation: ${borderAnimation} 16s linear infinite alternate;
@@ -118,28 +123,24 @@ const Index = ({ data }) => {
                   background-repeat: no-repeat;
                   content:"";
                   top:3rem;
-                  left: 0px;
-                  right: 0px;
-                  bottom: 0px;
+                  left: 3px;
+                  right: 3px;
+                  bottom: 3px;
                   position: absolute;
-                  opacity: 0.8;
+                  opacity: 1;
                   z-index:0;
+                  filter:  opacity(70%) blur(2px);
                 };
 
-                // //   @supports (mix-blend-mode: hue) {
-                // //     opacity: 1;
-                // //     mix-blend-mode: color;
-                // //     mix-blend-mode: hard-light;
-                // //     mix-blend-mode: hue;
-                // // }
+
                 // };              
             `}>
 
                 <heading css={css`
                     display: flex;
                     flex-direction: column;
-                    // background-image: url(${BackgroundMedia});
-                    
+                     background-image: url('../media/images/dropkick_demo.gif'); // BackgroundMedia
+                    //background-color:red;
                 `}>
 
               
@@ -197,7 +198,8 @@ const Index = ({ data }) => {
                   margin:0px;
                   position: relative;
                 `}>{node.excerpt}
-                <br />
+                <br />E:\Projects\RookTKO_frontend\RookTKO_Frontend\rooktko-frontend\src\media\images\icon.png
+                <img src={require(`../media/images/icon.png`)}/>
                 <span>
                   Read More -&gt;
                 </span>

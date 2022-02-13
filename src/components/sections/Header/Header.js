@@ -5,9 +5,11 @@ import { Link } from 'gatsby'
 
 const HeaderContainer = styled.div`
     background-color: #252423 !important;
+        box-shadow: 0px 4px 4px rgb(0 0 0 / 50%);
     width:100%;
     color: #ffffff;
-    //z-index:1000;
+    position:sticky;
+    z-index:999;
 `
 const Header = React.forwardRef((props, ref) => {
 

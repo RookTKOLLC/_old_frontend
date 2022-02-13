@@ -8,14 +8,18 @@ import SocialMediaNav from '../sections/SocialMediaNav/SocialMediaNav'
 import { css } from '@emotion/react'
 import { HamburgerMenu } from '../sections/HamburgerMenu/HamburgerMenu'
 import BackgroundImage from '../../media/images/polygon-scatter-haikei.svg'
-
+import ProgressBar from '../sections/ProgressBar/ProgressBar'
 
 const Content = styled.main`
-min-height: calc(100vh - 150px);
+  min-height: calc(100vh - 150px);
 `
 const MainLayout = ({ children }) => {
   const [headerVisibility, setHeaderVisibility] = useState(true)
   const myRef = createRef();
+
+
+
+
 
   /** 
    * Uses matchMedia to use CSS media queries params
@@ -66,6 +70,7 @@ const MainLayout = ({ children }) => {
       <Header ref={myRef}/>
       <NavBar />
       <SocialMediaNav tween={headerVisibility}/>
+      <ProgressBar />
       {/* <HamburgerMenu /> */}
       <Content>
         {children}
