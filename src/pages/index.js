@@ -15,7 +15,9 @@ export const query = graphql`
           date(formatString: "MMMM D, YYYY")
           title
           type
-
+          headingImage {
+            publicURL
+          }
         }
         id
         body
@@ -118,7 +120,7 @@ const Index = ({ data }) => {
                 content: "";
                 &:hover:before{
                   background-color: white;
-                  background: linear-gradient(0deg, rgba(255,255,255, 1) 50%, rgba(255,255,255, 0.5) 80%, rgba(255,255,255, 0) 100%), url(${BackgroundMedia});
+                  background: linear-gradient(0deg, rgba(255,255,255, 1) 50%, rgba(255,255,255, 0.5) 80%, rgba(255,255,255, 0) 100%), url(${node.frontmatter.headingImage.publicURL});
                   background-size: cover;
                   background-repeat: no-repeat;
                   content:"";
@@ -198,8 +200,8 @@ const Index = ({ data }) => {
                   margin:0px;
                   position: relative;
                 `}>{node.excerpt}
-                <br />E:\Projects\RookTKO_frontend\RookTKO_Frontend\rooktko-frontend\src\media\images\icon.png
-                <img src={require(`../media/images/icon.png`)}/>
+                <br />
+                <img src={node.frontmatter.headingImage.publicURL}/>
                 <span>
                   Read More -&gt;
                 </span>

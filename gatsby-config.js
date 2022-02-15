@@ -4,24 +4,7 @@ module.exports = {
     title: `RookTKO`,
     siteUrl: `https://www.rooktko.com`
   },
-  plugins: ["gatsby-plugin-emotion", "gatsby-plugin-image", "gatsby-plugin-react-helmet", "gatsby-plugin-sitemap", 
-  {
-    resolve: 'gatsby-plugin-manifest',
-    options: {
-      "icon": "src/media/images/icon.png"
-    }
-  }, 
-  {
-      resolve: `gatsby-plugin-mdx`,
-      options: {
-        defaultLayouts: {
-          default: require.resolve("./src/components/layouts/post.js"),
-        },
-      },
-    }, 
-    "gatsby-plugin-sharp", 
-    "gatsby-transformer-remark", 
-    "gatsby-transformer-sharp",
+  plugins: [
     {
       resolve: 'gatsby-source-filesystem',
       options: {
@@ -29,7 +12,7 @@ module.exports = {
         "path": `${__dirname}/src/media/images/`
       },
       __key: "images"
-    }, 
+    },
     {
       resolve: 'gatsby-source-filesystem',
       options: {
@@ -45,6 +28,33 @@ module.exports = {
         path: `${__dirname}/src/posts`,
       }
     },
+    {
+      resolve: 'gatsby-source-filesystem',
+      options: {
+        path: `${__dirname}/gatsby-config.js`,
+      },
+    },
+    "gatsby-plugin-emotion", 
+    "gatsby-plugin-image", 
+    "gatsby-plugin-react-helmet", 
+    "gatsby-plugin-sitemap",
+    {
+      resolve: 'gatsby-plugin-manifest',
+      options: {
+        "icon": "src/media/images/icon.png"
+      }
+    },
+    {
+      resolve: `gatsby-plugin-mdx`,
+      options: {
+        defaultLayouts: {
+          default: require.resolve("./src/components/layouts/post.js"),
+        },
+      },
+    },
+    "gatsby-plugin-sharp",
+    "gatsby-transformer-remark",
+    "gatsby-transformer-sharp",
     {
       resolve: "gatsby-plugin-page-creator",
       options: {
