@@ -29,7 +29,6 @@ export const query = graphql`
 const borderAnimation = keyframes`
   to {
     background-position: 50% 0%, 50% 100%, 0% 0%, 100% 100%;
-
   }
 `
 const RecentPosts = styled.article`
@@ -79,6 +78,7 @@ const Index = ({ data }) => {
             <RecentPosts
               key={node.id}>
               <section css={css`
+              
                position:relative;
                 cursor: pointer;
                 &:before{
@@ -97,15 +97,14 @@ const Index = ({ data }) => {
                 left:0;
                 right:0;
                 bottom:0;
-                
+                opacity:0.2;
                 }
                 &:hover::before{
-                  animation: ${borderAnimation} 16s linear infinite alternate;
-                  //transform: scale(1);
+                  animation: ${borderAnimation} 16s cubic-bezier(.17,.67,.83,.67) infinite alternate;
                   -webkit-box-shadow: rgba(0, 0, 0, 0.25) 0px 14px 28px, rgba(0, 0, 0, 0.22) 0px 10px 10px;
                   -moz-box-shadow: rgba(0, 0, 0, 0.25) 0px 14px 28px, rgba(0, 0, 0, 0.22) 0px 10px 10px;
                   box-shadow: rgba(0, 0, 0, 0.25) 0px 14px 28px, rgba(0, 0, 0, 0.22) 0px 10px 10px;
-
+                  opacity:1;
                 };
           `}
           onClick={event => {
@@ -116,15 +115,16 @@ const Index = ({ data }) => {
             <Wrapper 
             
             css={css`
-            //border: 2px solid red;
                 content: "";
                 &:hover:before{
+                  background-origin: padding-box;
                   background-color: white;
-                  background: linear-gradient(0deg, rgba(255,255,255, 1) 50%, rgba(255,255,255, 0.5) 80%, rgba(255,255,255, 0) 100%), url(${node.frontmatter.headingImage.publicURL});
+                  background: linear-gradient(0deg, rgba(255,255,255, 1) 50%, rgba(255,255,255, 0.4) 80%, rgba(255,255,255, 0) 100%), url(${node.frontmatter.headingImage.publicURL});
+                  background-position: center;
                   background-size: cover;
                   background-repeat: no-repeat;
                   content:"";
-                  top:3rem;
+                  top:3px;
                   left: 3px;
                   right: 3px;
                   bottom: 3px;
@@ -132,43 +132,32 @@ const Index = ({ data }) => {
                   opacity: 1;
                   z-index:0;
                   filter:  opacity(70%) blur(2px);
-                };
-
-
-                // };              
+                };           
             `}>
 
                 <heading css={css`
                     display: flex;
                     flex-direction: column;
-                     background-image: url('../media/images/dropkick_demo.gif'); // BackgroundMedia
-                    //background-color:red;
                 `}>
 
               
                   <h2 css={css`
                     position: relative;
-                    //top: -3rem;
+                    top: -1.5rem;
                     text-align: center;
                     background-color: #252423;
                     float: right;
                     text-shadow: 1px 1px 2px rgba(170, 170, 170, 0.623);
                     padding: 0rem 0.5rem;
                     border: 3px solid #ffa039;
-                    margin: 0rem;
-                    //position: absolute;
-                    //top: -1.5rem;
+                    margin: 0rem 1rem;
                     right: 0rem;
                     color: #FFF;
                     font-family: 'Montserrat';
                     text-decoration: none;
-                    &:hover{
-                      color: #FFF;
-                      //box-shadow: none;
-                    }
-                    //padding: 0.2em 2em;
+
                   `}>
-                      {node.frontmatter.title.split(' ').slice(0, 5).join(' ') + (node.frontmatter.title.split(' ').length > 5 ? '...' : '')}
+                      {node.frontmatter.title.split(' ').slice(0, 8).join(' ') + (node.frontmatter.title.split(' ').length > 5 ? '. . .' : '')}
                   </h2>
                   <h3 css={css`
                       position: relative;
@@ -201,7 +190,6 @@ const Index = ({ data }) => {
                   position: relative;
                 `}>{node.excerpt}
                 <br />
-                <img src={node.frontmatter.headingImage.publicURL}/>
                 <span>
                   Read More -&gt;
                 </span>
