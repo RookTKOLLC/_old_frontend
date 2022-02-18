@@ -65,9 +65,10 @@ function SocialMediaNav({tween}) {
         padding-top: 0.4rem;
         width: 100%;
         ul{
+            margin-top: 0;
+            margin-left: 50%;
             display: flex;
-            margin: 0;
-            justify-content: flex-end;
+            justify-content: space-evenly;
         }
         ol{
             margin:0;
@@ -142,6 +143,7 @@ function SocialMediaNav({tween}) {
         <SocialWrapper css={css`
             z-index 10000;
         `}>
+        
         <SocialMediaIcons 
             tween = {toggleNavDisplay} 
             scrolling = {isScroling}

@@ -2,8 +2,8 @@ import React, {useEffect, useState} from 'react'
 import styled from '@emotion/styled'
 import { css } from '@emotion/react'
 import { Link } from 'gatsby'
-import ProgressBar from '../ProgressBar/ProgressBar'
-
+import Logo from '../../../media/images/RookTKO.png'
+import { StaticImage } from "gatsby-plugin-image"
 
 const NavBarContainer = styled.section`
     background-color: #252423;
@@ -18,24 +18,24 @@ const NavBarContainer = styled.section`
     @media (max-width: 766px) {
         display:none;
     };
-    clip-path: polygon(0% 0%, 55% 0%, 45% 100%, 0% 100%);
+    clip-path: polygon(0% 0%, 55% 0%, 45% 100% , 0% 100%);
     //z-index:100;
 
 `
 const NavWrapper = styled.section`
-filter: drop-shadow(-1px 6px 3px rgba(50, 50, 0, 0.5));
-position: sticky;
-top: 0px;
-z-index:1000;
+    filter: drop-shadow(-1px 6px 3px rgba(50, 50, 0, 0.5));
+    position: sticky;
+    top: 0px;
+    z-index:1000;
 `
 const NavBarLinks = styled.ul`
     list-style-type: none; 
     padding: 0.4rem; 
     margin: 0; 
     display: flex;
-    justify-content: start;
+    justify-content: space-evenly;
+    width: 50%;
 `
-
 
 export default function NavBar(){
 

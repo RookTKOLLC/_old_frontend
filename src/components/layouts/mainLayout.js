@@ -59,7 +59,7 @@ const MainLayout = ({ children }) => {
 // //{data.site.siteMetadata.title}
   return (
     <section css={css`
-        background-image: linear-gradient(0deg, rgba(255,255,255,1) 10%,  rgba(255,255,255,0) 100%), url(${BackgroundImage});
+        background-image: linear-gradient(0deg, rgba(255,255,255,1) 10%,  rgba(255,255,255,0.65) 90%), url(${BackgroundImage});
         background-position: -10% -15%;
         background-repeat: repeat;
         background-size: auto;

@@ -104,7 +104,7 @@ const Index = ({ data }) => {
                   -webkit-box-shadow: rgba(0, 0, 0, 0.25) 0px 14px 28px, rgba(0, 0, 0, 0.22) 0px 10px 10px;
                   -moz-box-shadow: rgba(0, 0, 0, 0.25) 0px 14px 28px, rgba(0, 0, 0, 0.22) 0px 10px 10px;
                   box-shadow: rgba(0, 0, 0, 0.25) 0px 14px 28px, rgba(0, 0, 0, 0.22) 0px 10px 10px;
-                  opacity:1;
+                  opacity:0.8;
                 };
           `}
           onClick={event => {
@@ -142,6 +142,7 @@ const Index = ({ data }) => {
 
               
                   <h2 css={css`
+                  //display:inline;
                     position: relative;
                     top: -1.5rem;
                     text-align: center;
@@ -150,12 +151,12 @@ const Index = ({ data }) => {
                     text-shadow: 1px 1px 2px rgba(170, 170, 170, 0.623);
                     padding: 0rem 0.5rem;
                     border: 3px solid #ffa039;
-                    margin: 0rem 1rem;
+                    margin: 0 auto;
                     right: 0rem;
                     color: #FFF;
                     font-family: 'Montserrat';
                     text-decoration: none;
-
+                    z-index:0;
                   `}>
                       {node.frontmatter.title.split(' ').slice(0, 8).join(' ') + (node.frontmatter.title.split(' ').length > 5 ? '. . .' : '')}
                   </h2>
