@@ -1,6 +1,7 @@
 import * as React from 'react'
 import styled from '@emotion/styled'
 import { css } from '@emotion/react'
+import Logo from '../../media/images/RookTKO.png'
 
 const Newsletter = styled.section`
     grid-area: Newsletter;
@@ -49,7 +50,7 @@ const MainFooter = styled.section`
         "Newsletter     Newsletter      Newsletter  Newsletter"
         "LogoCopyright  LogoCopyright   SiteMap     SiteMap"
         ".              .               .           .";
-    background-color: #252423;
+    background-color: #171717;
     width: 100%;
     color: #FFF;
     height: 120px;
@@ -63,7 +64,13 @@ export default function Footer(){
         <MainFooter>
             <Newsletter>Subscribe to me now</Newsletter>
             <LogoCopyright>
-                <img src="" alt="Company Logo"/>
+                <img 
+                src={Logo} 
+                style={{
+                    width:'4rem'
+                }}
+                alt="Company Logo"
+                />
                 <span>© 2020-present RookTKO LLC. All Rights Reserved.</span></LogoCopyright>
             <SiteMap>
                 <Heading>Links</Heading>

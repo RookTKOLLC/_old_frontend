@@ -61,7 +61,7 @@ function SocialMediaNav({tween}) {
     `
 
     const SocialMediaIcons = styled.section`
-        background-color: rgba(255, 160, 57, 0.5);
+        background-color: rgba(244, 130, 37, 0.7);
         padding-top: 0.4rem;
         width: 100%;
         ul{
@@ -83,11 +83,11 @@ function SocialMediaNav({tween}) {
             padding-right: 0.4rem;
         }
 
-        //position ${props => props.tween ? 'fixed' : 'sticky'};
-        //top: ${props => props.scrolling && props.tween  ? '0rem' : ' 3.8rem'};
-        position: relative;
+        position ${props => props.tween ? 'relative' : 'sticky'};
+        top: ${props => props.scrolling && props.tween  ? '0rem' : ' 3.8rem'};
+        //position: relative;
         @supports (top: max(1em, 1px)){
-            top: max(calc(0rem), calc(3.72rem - max(${distanceFromTop} * 1px, 0rem) )); //- max(${distanceFromTop} * 1px, 0rem)
+            top: max(calc(0rem), calc(3.22rem - max(${distanceFromTop} * 1px, 0rem) )); //- max(${distanceFromTop} * 1px, 0rem)
         }
 
 
@@ -97,7 +97,7 @@ function SocialMediaNav({tween}) {
         //sticky with 0rem works on scroll
         //z-index: 100;
         //top: 4rem
-        //background-color: ${props =>
+        background-color: ${props =>
              props.tween ? 'hotpink' : 'turquoise'};
         //animation: ${props =>
             props.tween ? '': css`${bounce} 1s cubic-bezier(.8,.04,.83,.67) 1 forwards;`};
@@ -133,6 +133,11 @@ function SocialMediaNav({tween}) {
             top: 0.1rem;
         }
     `
+
+    const SocialLinks = styled.ol`
+        cursor: pointer;
+        background:blue;
+    `
     // const tweenNav = props => props.toggleNavDisplay ?
     // css`
     //     animation: ${bounce} 1s ease infinite;
@@ -141,7 +146,7 @@ function SocialMediaNav({tween}) {
     console.log('tween on scoai' , tween)
     return (
         <SocialWrapper css={css`
-            z-index 10000;
+            //z-index 10000;
         `}>
         
         <SocialMediaIcons 
@@ -151,13 +156,13 @@ function SocialMediaNav({tween}) {
             <ul css={css`
                     font-size: 1.4rem;
                 `}>
-                <ol><a href=""><FaFacebookSquare /></a></ol>
-                <ol><a href=""><FaTwitter /></a></ol>
-                <ol><a href=""><FiInstagram/> </a></ol>
-                <ol><a href=""><SiTiktok/> </a></ol>
-                <ol><a href=""><ImSteam /></a></ol>
-                <ol><a href=""><FaItchIo /></a></ol>
-                <ol><a href=""><GrLinkedin /></a></ol>
+                <SocialLinks><a href="https://example.com" target="_blank" rel="noopener noreferrer"><FaFacebookSquare />sdsdsdd</a></SocialLinks>
+                <SocialLinks><a href=""><FaTwitter /></a></SocialLinks>
+                <SocialLinks><a href=""><FiInstagram/> </a></SocialLinks>
+                <SocialLinks><a href=""><SiTiktok/> </a></SocialLinks>
+                <SocialLinks><a href=""><ImSteam /></a></SocialLinks>
+                <SocialLinks><a href=""><FaItchIo /></a></SocialLinks>
+                <SocialLinks><a href=""><GrLinkedin /></a></SocialLinks>
             </ul>
         </SocialMediaIcons>
         </SocialWrapper>

@@ -59,11 +59,11 @@ const MainLayout = ({ children }) => {
 // //{data.site.siteMetadata.title}
   return (
     <section css={css`
-        background-image: linear-gradient(0deg, rgba(255,255,255,1) 10%,  rgba(255,255,255,0.65) 90%), url(${BackgroundImage});
+        background-color: #111010;
+        background-image: linear-gradient(0deg, rgba(7, 7, 6,0.95) 10%,  rgba(47, 46, 45,0.55) 100%), url(${BackgroundImage});
         background-position: -10% -15%;
         background-repeat: repeat;
         background-size: auto;
-        //background-color: green;
         background-attachment: fixed;
     `}>
       {/* <title></title> */}

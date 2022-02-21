@@ -6,7 +6,7 @@ import Logo from '../../../media/images/RookTKO.png'
 import { StaticImage } from "gatsby-plugin-image"
 
 const NavBarContainer = styled.section`
-    background-color: #252423;
+    background-color: #171717;
     // position: sticky;
     position: relative;
     width:100%;
@@ -39,7 +39,7 @@ const NavBarLinks = styled.ul`
 
 export default function NavBar(){
 
-    const navItems = ['Propoganda','Projects', 'Goodies', 'About'  ] //this needs to be fixed for mobile //
+    const navItems = ['Games', 'DevBlog', 'Swag'  ] //this needs to be fixed for mobile //
    
     return(
         <NavWrapper >
@@ -54,7 +54,7 @@ export default function NavBar(){
                         css={css`
                             text-decoration: none;
                             color: #ffffff;
-                            font-family: "Playfair Display";
+                            font-family: 'Montserrat';
                         `}> {value} </Link> 
                     </li>)}
             </NavBarLinks>

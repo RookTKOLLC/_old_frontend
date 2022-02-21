@@ -7,10 +7,10 @@ import globalReset from "./src/styles/globalReset";
 import MainLayout from './src/components/layouts/MainLayout'
 
 export const wrapRootElement = ({ element, props }) => {
-    // props provide same data to Layout as Page element will get
-    // including location, data, etc - you don't need to pass it
-    return <MainLayout  {...props}>{element}</MainLayout>
-  }
+  // props provide same data to Layout as Page element will get
+  // including location, data, etc - you don't need to pass it
+  return <MainLayout  {...props}>{element}</MainLayout>
+}
 
 // export const wrapRootElement = ({element, props }) => {
 //     return <div data-testid="test"{...props}>{element} </div>

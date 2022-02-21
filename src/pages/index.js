@@ -5,12 +5,14 @@ import { Container } from '../components/layouts/Container'
 import {css, keyframes } from "@emotion/react"
 import BackgroundMedia from '../media/images/dropkick_demo.gif'
 import { navigate } from "gatsby"
+import { FullBleed } from '../components/sections/FullBleed'
+
 
 export const query = graphql`
   query {
     allMdx(sort: {fields: frontmatter___date, order: DESC}) {
       nodes {
-        excerpt(pruneLength: 180)
+        excerpt(pruneLength: 270)
         frontmatter {
           date(formatString: "MMMM D, YYYY")
           title
@@ -31,22 +33,43 @@ const borderAnimation = keyframes`
     background-position: 50% 0%, 50% 100%, 0% 0%, 100% 100%;
   }
 `
+
+const apearOnHover = keyframes`
+from {
+  background-position: 0% 50% , 0% 0%;
+}
+  to {
+    background-position: 100% 100% ,0% 0%;
+  }
+`
+
+const moveUp = keyframes`
+  to {
+    top: -0.5rem;
+  }
+`
+
 const RecentPosts = styled.article`
   position: relative;
   margin-bottom: 3em;
   //width: 100%;
   //background: linear-gradient(0deg, rgba(255,255,255, 1) 0%, rgba(255,255,255, 0) 50%);
   border-radius: 8px;
-  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 4px 30px rgba(255, 160, 57, 0.2);
   backdrop-filter: blur(2px);
   -webkit-backdrop-filter: blur(2px);
-  border: 1px solid rgba(255, 255, 255, 0.3);
+  border: 1px solid rgba(255, 160, 57, 0.3);
+  &:hover{
+    animation: ${moveUp} 0.1s linear 1 normal forwards;
+  }
 `
 const Wrapper = styled.section`
 
 `
 
-
+const LatestNewsHero = styled.section`
+  height:35rem;
+`
 
 const Index = ({ data }) => {
   // const [bgImage, setBgImage] = useState("")
@@ -63,6 +86,22 @@ const Index = ({ data }) => {
           grid-column: 2;
       }
     `}>
+      <FullBleed
+      css={css`
+        position: relative;
+        background-color: green;
+        top: -2.8rem;
+      `}>
+        <LatestNewsHero>
+          test stuff
+          <br />
+          more test stuff
+          <br />
+          more test stuff
+          <br />
+          more test stuff
+        </LatestNewsHero>
+        </FullBleed>
       {/* Todo: add hero??
            Todo: add other info? */}
       <ul css={css`
@@ -90,20 +129,20 @@ const Index = ({ data }) => {
                 background-repeat: repeat-x, repeat-x, repeat-y, repeat-y;
                 background-size: 6px 3px, 6px 3px, 3px 6px, 3px 6px;
                 background-position: 5% 0%, 98% 100%, 0% 100%, 100% 0px;
-                border-radius: 2px;
+                border-radius: 8px;
                 transition: all 150ms ease-in-out; 
                 position:absolute;
                 top:0;
                 left:0;
                 right:0;
                 bottom:0;
-                opacity:0.2;
+                opacity:0;
                 }
                 &:hover::before{
                   animation: ${borderAnimation} 16s cubic-bezier(.17,.67,.83,.67) infinite alternate;
-                  -webkit-box-shadow: rgba(0, 0, 0, 0.25) 0px 14px 28px, rgba(0, 0, 0, 0.22) 0px 10px 10px;
-                  -moz-box-shadow: rgba(0, 0, 0, 0.25) 0px 14px 28px, rgba(0, 0, 0, 0.22) 0px 10px 10px;
-                  box-shadow: rgba(0, 0, 0, 0.25) 0px 14px 28px, rgba(0, 0, 0, 0.22) 0px 10px 10px;
+                  -webkit-box-shadow: rgba(255, 160, 57, 0.25) 0px 14px 28px, rgba(255, 160, 57, 0.22) 0px 10px 10px;
+                  -moz-box-shadow: rgba(255, 160, 57, 0.25) 0px 14px 28px, rgba(255, 160, 57, 0.22) 0px 10px 10px;
+                  box-shadow: rgba(255, 160, 57, 0.25) 0px 14px 28px, rgba(255, 160, 57, 0.22) 0px 10px 10px;
                   opacity:0.8;
                 };
           `}
@@ -116,10 +155,12 @@ const Index = ({ data }) => {
             
             css={css`
                 content: "";
-                &:hover:before{
+                //transition: background 12s;
+                animation: ${apearOnHover} 6s slidein infinite normal;
+                &:hover::before{
                   background-origin: padding-box;
                   background-color: white;
-                  background: linear-gradient(0deg, rgba(255,255,255, 1) 50%, rgba(255,255,255, 0.4) 80%, rgba(255,255,255, 0) 100%), url(${node.frontmatter.headingImage.publicURL});
+                  background: linear-gradient(0deg, rgba(0,0,0, 0.5) 45%,  rgba(0,0,0, 0) 100%), url(${node.frontmatter.headingImage.publicURL});
                   background-position: center;
                   background-size: cover;
                   background-repeat: no-repeat;
@@ -132,6 +173,7 @@ const Index = ({ data }) => {
                   opacity: 1;
                   z-index:0;
                   filter:  opacity(70%) blur(2px);
+
                 };           
             `}>
 
@@ -146,7 +188,7 @@ const Index = ({ data }) => {
                     position: relative;
                     top: -1.5rem;
                     text-align: center;
-                    background-color: #252423;
+                    background-color: #242424;
                     float: right;
                     text-shadow: 1px 1px 2px rgba(170, 170, 170, 0.623);
                     padding: 0rem 0.5rem;
