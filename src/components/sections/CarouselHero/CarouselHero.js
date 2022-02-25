@@ -2,6 +2,7 @@ import React, {useState} from "react";
 import { css, keyframes } from "@emotion/react"
 import { IoIosArrowBack } from '@react-icons/all-files/io/IoIosArrowBack'
 import { IoIosArrowForward } from '@react-icons/all-files/io/IoIosArrowForward'
+import styled from '@emotion/styled'
 
 export default function CarouselHero({ featured }) {
     const [shown, setShown] = useState(0)
@@ -14,7 +15,46 @@ export default function CarouselHero({ featured }) {
     function backwardClick(){
         setShown(shown === 0 ? featured.length-1 : shown-1)
     }
+    const pulsate = keyframes`
+        0% {
+            transform: scale(1);
+            box-shadow: 0 0 0 0 rgba(255,160,57, 0.2);
+        }
 
+        50% {
+            transform: scale(0.9);
+            box-shadow: 0 0 0 10px rgba(255,160,57, 0);
+        }
+
+        100% {
+            transform: scale(1);
+            box-shadow: 0 0 0 0 rgba(255,160,57, 0);
+        }
+    `
+    const HeroSelectionButton = styled.div`
+        width: 4rem;
+        height: 0.4rem;
+        background: ${props => props.current ? '#ffa039' : 'rgba(0,0,0, 0.5)'};
+        border-radius: 2%;
+        margin: 0px 0.5rem 1rem;
+        position: relative;
+        &:hover{
+            cursor: pointer;
+            background: #ffa039;
+            animation: ${pulsate} 1s ease-in-out infinite;
+        };
+    `
+
+    const HeroSelectionButtonWrapper  = styled.div`
+        position: absolute;
+        top: 60%;
+        width: 100vw;
+        height: 12rem;
+        display: flex;
+        justify-content: center;
+        align-items: self-end;
+    `
+    
     console.log('carouselHero', featured)
     return (
         <section css={css`
@@ -66,18 +106,17 @@ export default function CarouselHero({ featured }) {
             
             onClick={forwardClick}
             />
-            <div
-                css={css`
-                    background: linear-gradient(180deg, rgba(0,0,0,0.60) 0%, rgba(255,5,5,0) 100%);
-                    border-top-color:  rgba(31, 27, 29, 0.31);
-                    border-top-width: 1px;
-                    border-top-style: solid;
-                    position: absolute;
-                    top: 75%;
-                    width: 100vw;
-                    height: 12rem;
-                `}
-            >wewewe</div>
+            <HeroSelectionButtonWrapper>
+            {featured.map((node, idx) => (
+                <HeroSelectionButton 
+                key = {idx} 
+                current = {shown == idx}
+                onClick={() => setShown(idx)}
+                
+                />
+            ))}
+
+            </HeroSelectionButtonWrapper>
         </section>
     )
 }
