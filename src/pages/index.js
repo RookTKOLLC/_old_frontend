@@ -2,11 +2,12 @@ import * as React from 'react'
 import { graphql } from 'gatsby'
 import styled from '@emotion/styled'
 import { Container } from '../components/layouts/Container'
-import {css, keyframes } from "@emotion/react"
+import { css, keyframes } from "@emotion/react"
 import BackgroundMedia from '../media/images/dropkick_demo.gif'
 import { navigate } from "gatsby"
 import { FullBleed } from '../components/sections/FullBleed'
-
+import { StaticImage } from "gatsby-plugin-image"
+import CarouselHero from '../components/sections/CarouselHero/CarouselHero'
 
 export const query = graphql`
   query {
@@ -20,6 +21,7 @@ export const query = graphql`
           headingImage {
             publicURL
           }
+          featureHero
         }
         id
         body
@@ -28,20 +30,13 @@ export const query = graphql`
     }
   }
 `
+
 const borderAnimation = keyframes`
   to {
     background-position: 50% 0%, 50% 100%, 0% 0%, 100% 100%;
   }
 `
 
-const apearOnHover = keyframes`
-from {
-  background-position: 0% 50% , 0% 0%;
-}
-  to {
-    background-position: 100% 100% ,0% 0%;
-  }
-`
 
 const moveUp = keyframes`
   to {
@@ -50,6 +45,7 @@ const moveUp = keyframes`
 `
 
 const RecentPosts = styled.article`
+  top: 0rem;
   position: relative;
   margin-bottom: 3em;
   //width: 100%;
@@ -60,15 +56,32 @@ const RecentPosts = styled.article`
   -webkit-backdrop-filter: blur(2px);
   border: 1px solid rgba(255, 160, 57, 0.3);
   &:hover{
-    animation: ${moveUp} 0.1s linear 1 normal forwards;
+    animation: ${moveUp} 160ms linear 1 normal forwards;
   }
 `
 const Wrapper = styled.section`
 
 `
+const breakpoints = [576, 768, 992, 1200]
 
-const LatestNewsHero = styled.section`
-  height:35rem;
+const mq = breakpoints.map(
+  bp => `@media (min-width: ${bp}px)`
+)
+const FeaturedHero = styled.section`
+  display: flex;
+  height:36rem;
+  @media (max-width: 650px) {
+    background-color: red;
+    color: #fff;
+    height:20rem;
+  }
+`
+const HeroSelection = styled.div`
+  width: 12rem;
+  background-color: pink;
+  border: 2px solid red;
+  margin:0 1rem;
+  border-radius: 8px;
 `
 
 const Index = ({ data }) => {
@@ -76,6 +89,9 @@ const Index = ({ data }) => {
   // const im = import('../media/images/dropkick_demo.gif').then(image => {
   //   setBgImage(image)
   // });
+  const featuredArticles = data.allMdx.nodes.filter((node) => node.frontmatter.featureHero);
+  const nonFeaturedArticles = data.allMdx.nodes.filter((node) => !node.frontmatter.featureHero);
+  console.log(featuredArticles)
   return (
 
     <Container css={css`
@@ -86,24 +102,23 @@ const Index = ({ data }) => {
           grid-column: 2;
       }
     `}>
+
       <FullBleed
-      css={css`
-        position: relative;
-        background-color: green;
-        top: -2.8rem;
+        css={css`
+          position: relative;
+          overflow: hidden;
+          background-color: green;
+          top: -2.8rem;
+          border-width: 0rem;
+          border-bottom-width: 0.1rem;
+          border-style: solid;
+          border-color: #ffa039;
       `}>
-        <LatestNewsHero>
-          test stuff
-          <br />
-          more test stuff
-          <br />
-          more test stuff
-          <br />
-          more test stuff
-        </LatestNewsHero>
-        </FullBleed>
-      {/* Todo: add hero??
-           Todo: add other info? */}
+        <CarouselHero featured = {featuredArticles}/>
+
+      </FullBleed>
+
+
       <ul css={css`
     margin: 0px;
     padding: 0px;
@@ -130,7 +145,7 @@ const Index = ({ data }) => {
                 background-size: 6px 3px, 6px 3px, 3px 6px, 3px 6px;
                 background-position: 5% 0%, 98% 100%, 0% 100%, 100% 0px;
                 border-radius: 8px;
-                transition: all 150ms ease-in-out; 
+                //transition: all 150ms ease-in-out; 
                 position:absolute;
                 top:0;
                 left:0;
@@ -146,21 +161,19 @@ const Index = ({ data }) => {
                   opacity:0.8;
                 };
           `}
-          onClick={event => {
-            event.preventDefault()
-            navigate("/" + node.slug)
-          }}
-          >
-            <Wrapper 
-            
-            css={css`
-                content: "";
-                //transition: background 12s;
-                animation: ${apearOnHover} 6s slidein infinite normal;
+                onClick={event => {
+                  event.preventDefault()
+                  navigate("/" + node.slug)
+                }}
+              >
+                <Wrapper
+
+                  css={css`
+
                 &:hover::before{
                   background-origin: padding-box;
                   background-color: white;
-                  background: linear-gradient(0deg, rgba(0,0,0, 0.5) 45%,  rgba(0,0,0, 0) 100%), url(${node.frontmatter.headingImage.publicURL});
+                  background: linear-gradient(0deg, rgba(0,0,0, 0.7) 45%,  rgba(0,0,0, 0) 100%), url(${node.frontmatter.headingImage.publicURL});
                   background-position: center;
                   background-size: cover;
                   background-repeat: no-repeat;
@@ -177,13 +190,13 @@ const Index = ({ data }) => {
                 };           
             `}>
 
-                <heading css={css`
+                  <heading css={css`
                     display: flex;
                     flex-direction: column;
                 `}>
 
-              
-                  <h2 css={css`
+
+                    <h2 css={css`
                   //display:inline;
                     position: relative;
                     top: -1.5rem;
@@ -201,8 +214,8 @@ const Index = ({ data }) => {
                     z-index:0;
                   `}>
                       {node.frontmatter.title.split(' ').slice(0, 8).join(' ') + (node.frontmatter.title.split(' ').length > 5 ? '. . .' : '')}
-                  </h2>
-                  <h3 css={css`
+                    </h2>
+                    <h3 css={css`
                       position: relative;
                       padding-top: 4rem;
                       padding-left: 2rem;
@@ -211,13 +224,13 @@ const Index = ({ data }) => {
 
                       
                   `}>
-              {node.frontmatter.type}</h3>
+                      {node.frontmatter.type}</h3>
 
-                </heading>
+                  </heading>
 
 
 
-                <p css={css`
+                  <p css={css`
               color: #999999;
               margin: 0rem;
               position: relative;
@@ -226,23 +239,23 @@ const Index = ({ data }) => {
               padding: 0rem 2rem 1rem;
               line-height: 0;
             `}> Posted: {node.frontmatter.date}
-                </p>
-                <p css={css`
+                  </p>
+                  <p css={css`
                   padding: 0.2rem 2rem  2rem;
                   margin:0px;
                   position: relative;
                 `}>{node.excerpt}
-                <br />
-                <span>
-                  Read More -&gt;
-                </span>
-                
-                </p>
-                {/* <MDXRenderer>
+                    <br />
+                    <span>
+                      Read More -&gt;
+                    </span>
+
+                  </p>
+                  {/* <MDXRenderer>
 
                 {node.exc}
           </MDXRenderer> */}
-          </Wrapper>
+                </Wrapper>
               </section>
             </RecentPosts>
           ))
