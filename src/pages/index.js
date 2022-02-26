@@ -107,7 +107,6 @@ const Index = ({ data }) => {
         css={css`
           position: relative;
           overflow: hidden;
-          background-color: green;
           top: -2.8rem;
           border-width: 0rem;
           border-bottom-width: 0.1rem;

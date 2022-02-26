@@ -43,6 +43,17 @@ export default function CarouselHero({ featured }) {
             background: #ffa039;
             animation: ${pulsate} 1s ease-in-out infinite;
         };
+        &:after{
+            content: "";
+            //background: green;
+            //border: 1px solid red;
+            position: absolute;
+            top: 0px;
+            left: -5px;
+            top: -10px;
+            width: 5rem;
+            height: 1.9rem;
+        }
     `
 
     const HeroSelectionButtonWrapper  = styled.div`
@@ -59,7 +70,6 @@ export default function CarouselHero({ featured }) {
     return (
         <section css={css`
             height: 30rem;
-            background: white;
             position: relative;
 
             `}>
