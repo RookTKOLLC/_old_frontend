@@ -15,7 +15,7 @@ const NavBarContainer = styled.section`
     color: #ffffff;
     top: 0px;
     z-index:1000;
-    @media (max-width: 766px) {
+    @media (max-width: 784px) {
         display:none;
     };
     clip-path: polygon(0% 0%, 55% 0%, 45% 100% , 0% 100%);

@@ -15,16 +15,13 @@ function SocialMediaNav({tween}) {
     const [isScroling, setIsScrolling] = useState(0);
     const [toggleNavDisplay, setToggleNavDisplay] = useState(false)
     const [distanceFromTop, setDistanceFromTop] = useState(0)
-    console.log('re-render')
-    //console.log('tween in social', tween)
-    //console.log('toggleNavDisplay', toggleNavDisplay)
+
+
     useEffect(() => {
-        //console.log("toggletween")
+
         if(!tween && !toggleNavDisplay){
-            console.log('this hsould only happen once!!!')
             setToggleNavDisplay(!tween);
         }
-        //console.log('toggleNavDisplay2', toggleNavDisplay)
     }, [tween])
 
 
@@ -101,7 +98,7 @@ function SocialMediaNav({tween}) {
              props.tween ? 'hotpink' : 'turquoise'};
         //animation: ${props =>
             props.tween ? '': css`${bounce} 1s cubic-bezier(.8,.04,.83,.67) 1 forwards;`};
-        @media (max-width: 766px) {
+        @media (max-width: 784px) {
             display:none;
         };
         //background: rgba(255, 255, 255, 0.2);
@@ -143,11 +140,8 @@ function SocialMediaNav({tween}) {
     //     animation: ${bounce} 1s ease infinite;
     // `
     // : ''
-    console.log('tween on scoai' , tween)
     return (
-        <SocialWrapper css={css`
-            //z-index 10000;
-        `}>
+        <SocialWrapper >
         
         <SocialMediaIcons 
             tween = {toggleNavDisplay} 

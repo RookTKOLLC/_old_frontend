@@ -7,11 +7,14 @@ export const HamburgerMenu = () => {
         <section
             css={css`
                 width:100%;
-                background-color: red; //#252423;
-                display: sticky;
+                background-color: #171717; //#252423;
+                z-index: 1;
+                position: sticky;
+                top:0px;
+                margin-bottom: 45px;
             `}
         >
-            Hello
+            X
         </section>
     )
 }

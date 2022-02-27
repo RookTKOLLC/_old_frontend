@@ -38,7 +38,7 @@ export default function ProgressBar() {
       `
       const ProgressBarWrapper = styled.section`
          z-index: 9999 !important;
-        @media (max-width: 766px) {
+        @media (max-width: 784px) {
             display:none;
         };
         width: 100%;

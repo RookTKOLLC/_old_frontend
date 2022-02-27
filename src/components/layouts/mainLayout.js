@@ -15,6 +15,7 @@ const Content = styled.main`
 `
 const MainLayout = ({ children }) => {
   const [headerVisibility, setHeaderVisibility] = useState(true)
+  const [mobileView, setMobileView] = useState(false);
   const myRef = createRef();
 
 
@@ -26,8 +27,8 @@ const MainLayout = ({ children }) => {
    * to get a retrieve a boolean value based on if its
    * in mobile or pc width size
    */
-   const mql = window.matchMedia('(max-width: 600px)')
-   let mobileView = mql.matches;
+   const mql = window.matchMedia('(max-width: 784px)')
+   let mobileMatch = mql.matches;
 
   /** 
    * Uses intersection observer to observe changes to the 
@@ -42,11 +43,31 @@ const MainLayout = ({ children }) => {
         setHeaderVisibility(entry.isIntersecting);
       }
     })
-    if(!mobileView){
+    if(!mobileMatch){
       observer.observe(myRef.current)
     }
   }, [])
   
+
+
+
+  const observer = useRef(null);
+  useEffect(() => {
+      observer.current = new ResizeObserver((entries, idx) => {
+        console.log(entries);
+        console.log('this is borderbox', entries[0].borderBoxSize[0].inlineSize)
+        if(entries[0].borderBoxSize[0].inlineSize <= 784){
+          setMobileView(true)
+        }else{
+          setMobileView(false)
+        }
+      });
+  
+      const body = document.getElementsByTagName("BODY")[0];
+      observer.current.observe(body);
+  
+      return () => observer.current.unobserve(body);
+    });
 //   const data = useStaticQuery(graphql`
 //       query {
 //         site {
@@ -67,11 +88,16 @@ const MainLayout = ({ children }) => {
         background-attachment: fixed;
     `}>
       {/* <title></title> */}
+      {!mobileView ? 
+      <> 
       <Header ref={myRef}/>
       <NavBar />
       <SocialMediaNav tween={headerVisibility}/>
       <ProgressBar />
-      {/* <HamburgerMenu /> */}
+      </>
+
+      : <HamburgerMenu /> }
+      {/*  */}
       <Content>
         {children}
       </Content>

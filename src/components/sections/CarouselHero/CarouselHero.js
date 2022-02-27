@@ -45,14 +45,12 @@ export default function CarouselHero({ featured }) {
         };
         &:after{
             content: "";
-            //background: green;
-            //border: 1px solid red;
             position: absolute;
             top: 0px;
             left: -5px;
             top: -10px;
             width: 5rem;
-            height: 1.9rem;
+            height: 2rem;
         }
     `
 
