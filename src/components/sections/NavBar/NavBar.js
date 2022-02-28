@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from 'react'
+import React, { useEffect, useState } from 'react'
 import styled from '@emotion/styled'
 import { css } from '@emotion/react'
 import { Link } from 'gatsby'
@@ -37,28 +37,28 @@ const NavBarLinks = styled.ul`
     width: 50%;
 `
 
-export default function NavBar(){
+export default function NavBar() {
 
-    const navItems = ['Games', 'DevBlog', 'Swag'  ] //this needs to be fixed for mobile //
-   
-    return(
+    const navItems = ['Games', 'DevBlog', 'Swag'] //this needs to be fixed for mobile //
+
+    return (
         <NavWrapper >
-        <NavBarContainer>
-            <NavBarLinks>
-                {navItems.map((value, idx) => 
-                    <li 
-                        key={idx} 
-                        css={css`padding: 0px 1rem`}
-                    >
-                        <Link to={'/' + `${value.toLowerCase()}`}
-                        css={css`
+            <NavBarContainer>
+                <NavBarLinks>
+                    {navItems.map((value, idx) =>
+                        <li
+                            key={idx}
+                            css={css`padding: 0px 1rem`}
+                        >
+                            <Link to={'/' + `${value.toLowerCase()}`}
+                                css={css`
                             text-decoration: none;
                             color: #ffffff;
                             font-family: 'Montserrat';
-                        `}> {value} </Link> 
-                    </li>)}
-            </NavBarLinks>
-        </NavBarContainer>
+                        `}> {value} </Link>
+                        </li>)}
+                </NavBarLinks>
+            </NavBarContainer>
         </NavWrapper>
     )
 }
