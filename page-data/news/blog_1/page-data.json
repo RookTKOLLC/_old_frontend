@@ -1,5 +1,5 @@
 {
     "componentChunkName": "component---src-posts-news-blog-1-mdx",
     "path": "/news/blog_1/",
-    "result": {"pageContext":{"frontmatter":{"title":"My First Post and its a very very very very very long one","slug":"test-post1","type":"News","subType":"RNR","headingImage":"../../media/images/Smoke_naruto.gif","date":"1991-07-23"}}},
+    "result": {"pageContext":{"frontmatter":{"title":"My First Post and its a very very very very very long one","slug":"test-post1","type":"News","subType":"RNR","featureHero":false,"headingImage":"../../media/images/Smoke_naruto.gif","headingImageAlt":"test","date":"1991-07-23"}}},
     "staticQueryHashes": []}

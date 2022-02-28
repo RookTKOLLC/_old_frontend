@@ -1,5 +1,5 @@
 {
     "componentChunkName": "component---src-posts-test-001-mdx",
     "path": "/test001/",
-    "result": {"pageContext":{"frontmatter":{"title":"This is a test","path":"/bb","type":"News","subType":"RNR","headingImage":"../media/images/dropkick_demo.gif","date":"2022-01-02"}}},
+    "result": {"pageContext":{"frontmatter":{"title":"This is a test","path":"/bb","type":"News","subType":"RNR","featureHero":true,"headingImage":"../media/images/dropkick_demo.png","headingImageAlt":"test","date":"2022-01-02"}}},
     "staticQueryHashes": []}

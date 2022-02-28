@@ -1,5 +1,5 @@
 {
     "componentChunkName": "component---src-posts-sales-blog-2-copy-2-mdx",
     "path": "/sales/blog_2 copy 2/",
-    "result": {"pageContext":{"frontmatter":{"title":"Another!!! Post","type":"Sales","subType":"RNR","headingImage":"../../media/images/dropkick_demo.gif","date":"1800-07-24"}}},
+    "result": {"pageContext":{"frontmatter":{"title":"Another!!! Post","type":"Sales","subType":"RNR","featureHero":false,"headingImage":"../../media/images/dropkick_demo.png","headingImageAlt":"test","date":"1800-07-24"}}},
     "staticQueryHashes": []}
