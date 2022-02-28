@@ -25,9 +25,6 @@ export const HamburgerMenu = () => {
         transform: translateY(100%);
     }
     `
-
-
-
     const bounceOut = keyframes`
     from {
         transform: translateY(100%);
@@ -71,18 +68,36 @@ export const HamburgerMenu = () => {
 
             `}
         >
-            <span
-                onClick={onClickHandler}
+            <div onClick={onClickHandler}
                 css={
                     css`
+                    width: 2rem;
+                    height: 1rem;
+                    top: 1rem;
+                    padding: 1rem 0.5rem 0.2rem;
+                    left: 1.5rem;
+                    position: relative;
+                    content: '';
+                    &:hover{
+                        cursor: pointer;
+                    }
+                    `
+                }>
+                <span
+
+                    css={
+                        css`
+                        &:hover{
+                            color: #ffa039;
+                        }
                     background-color: white;
                     z-index: 10000;
                     display: block;
-                    position: relative;
                     width: 2rem;
                     height: 3px;
                     content: '';
-                    top: 2rem;
+                    poisiton:relative;
+                    top: 4rem;
                     left: 1.5rem;
                     &::before,&::after {
                         width: 2rem;
@@ -92,16 +107,31 @@ export const HamburgerMenu = () => {
                         content: '';
                     }
                     &::after{
+                        width: 1.2rem;
                         bottom:0.5rem;
                     }
                     &::before{
+                        width: 2rem;
                         top:0.5rem;
                     }
+                    transition: transform 250ms ease-in-out, opacity 200ms linear;
+                    ${showMenu &&
+                            css`
+                        transform: rotate(45deg);
+                        &::after{
+                            opacity:0;
+                        }
+                        &::before{
+                            transform: rotate(90deg) translate(-0.5rem);
+                        }
+                    `}
                 `
-                }
-            >
+                    }
+                >
 
-            </span>
+                </span>
+            </div>
+
             <div
                 id="burgerBackground"
                 css={
