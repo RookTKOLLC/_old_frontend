@@ -90,10 +90,10 @@ const MainLayout = ({ children }) => {
       {/* <title></title> */}
       {!mobileView ? 
       <> 
-      <Header ref={myRef}/>
-      <NavBar />
-      <SocialMediaNav tween={headerVisibility}/>
-      <ProgressBar />
+        <Header ref={myRef}/>
+        <NavBar />
+        <SocialMediaNav tween={headerVisibility}/>
+        <ProgressBar />
       </>
 
       : <HamburgerMenu /> }

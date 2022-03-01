@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import styled from '@emotion/styled'
-import { css } from '@emotion/react'
+import { css, keyframes } from "@emotion/react"
 import { Link } from 'gatsby'
 import Logo from '../../../media/images/RookTKO.png'
 import { StaticImage } from "gatsby-plugin-image"
@@ -9,7 +9,7 @@ const NavBarContainer = styled.section`
     background-color: #171717;
     // position: sticky;
     position: relative;
-    width:100%;
+    //width:100%;
    // box-shadow: 0px 4px 4px rgb(0 0 0 / 50%);
     //box-shadow: 
     color: #ffffff;
@@ -18,7 +18,7 @@ const NavBarContainer = styled.section`
     @media (max-width: 784px) {
         display:none;
     };
-    clip-path: polygon(0% 0%, 55% 0%, 45% 100% , 0% 100%);
+    clip-path: polygon(0% 0%, 95% 0%, 85% 100% , 0% 100%);
     //z-index:100;
 
 `
@@ -27,15 +27,18 @@ const NavWrapper = styled.section`
     position: sticky;
     top: 0px;
     z-index:1000;
+    width: 52%;
+    //padding-left:1rem;
 `
 const NavBarLinks = styled.ul`
     list-style-type: none; 
-    padding: 0.4rem; 
-    margin: 0; 
+    padding: 0.4rem 0rem; 
+    margin: 0px; 
     display: flex;
     justify-content: space-evenly;
-    width: 50%;
+    //width: 50%;
 `
+
 
 export default function NavBar() {
 

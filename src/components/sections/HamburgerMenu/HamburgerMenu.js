@@ -100,7 +100,6 @@ export const HamburgerMenu = () => {
                     top: 4rem;
                     left: 1.5rem;
                     &::before,&::after {
-                        width: 2rem;
                         height: 3px;
                         background-color: white;
                         position: absolute;
@@ -108,11 +107,11 @@ export const HamburgerMenu = () => {
                     }
                     &::after{
                         width: 1.2rem;
-                        bottom:0.5rem;
+                        top:0.5rem;
                     }
                     &::before{
                         width: 2rem;
-                        top:0.5rem;
+                        bottom:0.5rem;
                     }
                     transition: transform 250ms ease-in-out, opacity 200ms linear;
                     ${showMenu &&
@@ -122,7 +121,7 @@ export const HamburgerMenu = () => {
                             opacity:0;
                         }
                         &::before{
-                            transform: rotate(90deg) translate(-0.5rem);
+                            transform: rotate(90deg) translate(0.5rem);
                         }
                     `}
                 `
@@ -131,7 +130,9 @@ export const HamburgerMenu = () => {
 
                 </span>
             </div>
-
+                        {/*
+                            TODO: fix jittery onload dropdown of btn hamburg menu
+                        */}
             <div
                 id="burgerBackground"
                 css={
@@ -141,10 +142,13 @@ export const HamburgerMenu = () => {
                         color: white;
                         height: 100vh;
                         width: 100vw;
-                        top: -101vh;
-                        ${showMenu ?
-                            css`animation: ${bounceIn} 300ms ease 1 forwards`
-                            : css`animation: ${bounceOut} 300ms ease 1 forwards`} ;
+                        top: -100vh;
+                        ${!showMenu && css`opacity:0`}
+                        ${showMenu && css`opacity:1`}
+                        ${showMenu &&
+                            css`animation: ${bounceIn} 300ms ease 1 forwards`} ;
+                        ${!showMenu &&
+                            css`animation: ${bounceOut} 100ms ease 1 forwards`}
                         //transform: ${showMenu ? 'translateY(100%)' : 'translateY(0%)'};
                         //transition: transform 300ms cubic-bezier(.5,0,.5,1);
                         position: absolute;

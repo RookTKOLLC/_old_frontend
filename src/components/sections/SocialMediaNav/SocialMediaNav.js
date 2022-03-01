@@ -3,7 +3,7 @@ import styled from '@emotion/styled'
 import { css, keyframes } from '@emotion/react'
 import { Link } from 'gatsby'
 import { FiInstagram } from '@react-icons/all-files/fi/FiInstagram'
-import { FaFacebookSquare} from '@react-icons/all-files/fa/FaFacebookSquare'
+import { FaFacebookSquare } from '@react-icons/all-files/fa/FaFacebookSquare'
 import { ImSteam } from '@react-icons/all-files/im/ImSteam'
 import { FaTwitter } from '@react-icons/all-files/fa/FaTwitter'
 import { SiTiktok } from '@react-icons/all-files/si/SiTiktok'
@@ -11,7 +11,7 @@ import { FaItchIo } from '@react-icons/all-files/fa/FaItchIo'
 import { GrLinkedin } from '@react-icons/all-files/gr/GrLinkedin'
 import { IconContext } from "react-icons";
 
-function SocialMediaNav({tween}) {
+function SocialMediaNav({ tween }) {
     const [isScroling, setIsScrolling] = useState(0);
     const [toggleNavDisplay, setToggleNavDisplay] = useState(false)
     const [distanceFromTop, setDistanceFromTop] = useState(0)
@@ -19,37 +19,34 @@ function SocialMediaNav({tween}) {
 
     useEffect(() => {
 
-        if(!tween && !toggleNavDisplay){
+        if (!tween && !toggleNavDisplay) {
             setToggleNavDisplay(!tween);
         }
     }, [tween])
+    
+    {/* TODO: On initial load bounce down socialmedianav and fix css for it */}
 
-
-    const navItems = ['Propoganda','Projects', 'Goodies', 'About'  ] //this needs to be fixed for mobile //
-        
     const onScroll = () => {
         const docEl = document.documentElement;
         const windowScrollHeight = docEl.scrollTop;
         const currentWindowHeight = docEl.scrollHeight - docEl.clientHeight;
         const scroll = (windowScrollHeight / currentWindowHeight) * 100;
         setIsScrolling(scroll)
-        console.log('isscrolling on scoai' , isScroling)
-      };
+        console.log('isscrolling on scoai', isScroling)
+    };
 
-      useEffect(() => {
-          //console.log("navBar")
-          window.addEventListener("scroll", onScroll);
-          return () => window.removeEventListener('scroll', onScroll)
-      }, []);
+    useEffect(() => {
+        window.addEventListener("scroll", onScroll);
+        return () => window.removeEventListener('scroll', onScroll)
+    }, []);
 
-      useEffect(() => {
+    useEffect(() => {
         let root = document.documentElement;
         document.addEventListener("scroll", evt => {
             setDistanceFromTop(root.scrollTop);
-            //root.style.setProperty("--scrollTop", root.scrollTop);
         });
-      }, [])
-    //console.log('toggleNavDisplay3', toggleNavDisplay)
+    }, [])
+
     const SocialWrapper = styled.section`
       position: fixed;
       top: 0rem;
@@ -69,7 +66,7 @@ function SocialMediaNav({tween}) {
         }
         ol{
             margin:0;
-            padding: 0px 0.2rem;
+            padding: 0px 1rem;
         }
         ol a {
             color: white;
@@ -81,7 +78,7 @@ function SocialMediaNav({tween}) {
         }
 
         position ${props => props.tween ? 'relative' : 'sticky'};
-        top: ${props => props.scrolling && props.tween  ? '0rem' : ' 3.8rem'};
+        top: ${props => props.scrolling && props.tween ? '0rem' : ' 3.8rem'};
         //position: relative;
         @supports (top: max(1em, 1px)){
             top: max(calc(0rem), calc(3.22rem - max(${distanceFromTop} * 1px, 0rem) )); //- max(${distanceFromTop} * 1px, 0rem)
@@ -94,10 +91,10 @@ function SocialMediaNav({tween}) {
         //sticky with 0rem works on scroll
         //z-index: 100;
         //top: 4rem
-        background-color: ${props =>
-             props.tween ? 'hotpink' : 'turquoise'};
+        //background-color: ${props =>
+            props.tween ? 'hotpink' : 'turquoise'};
         //animation: ${props =>
-            props.tween ? '': css`${bounce} 1s cubic-bezier(.8,.04,.83,.67) 1 forwards;`};
+            props.tween ? '' : css`${bounce} 1s cubic-bezier(.8,.04,.83,.67) 1 forwards;`};
         @media (max-width: 784px) {
             display:none;
         };
@@ -130,11 +127,35 @@ function SocialMediaNav({tween}) {
             top: 0.1rem;
         }
     `
+    const pulsate = keyframes`
+    0% {
+        transform: scale(1);
+        filter: drop-shadow(0 0 0px rgba(255, 255, 255, 0.2));
+    }
 
-    const SocialLinks = styled.ol`
-        cursor: pointer;
-        background:blue;
+    50% {
+        transform: rotate(10deg) scale(1.2);
+        filter: drop-shadow(0 0 10px rgba(255, 255, 255, 1));
+    }
+
+    90%{
+        transform: scale(0.85);
+    }
+    100% {
+        transform: scale(1);
+        //filter: drop-shadow(0 0 0px rgba(255, 255, 255, 0.2));
+        filter: drop-shadow(1px 1px 0 rgba(234,191,255,0.5)) drop-shadow(-1px -1px 0 rgba(234,191,255,0.5)) drop-shadow(1px -1px 0 rgba(234,191,255,0.5)) drop-shadow(-1px 1px 0 rgba(234,191,255,0.5));
+    }
     `
+    const SocialLinks = styled.ol`
+        &:hover{
+            cursor:pointer;
+            animation: ${pulsate} 800ms ease-in-out 1;
+            animation-fill-mode: forwards;
+        }
+        padding-left: 3rem;
+    `
+
     // const tweenNav = props => props.toggleNavDisplay ?
     // css`
     //     animation: ${bounce} 1s ease infinite;
@@ -142,23 +163,24 @@ function SocialMediaNav({tween}) {
     // : ''
     return (
         <SocialWrapper >
-        
-        <SocialMediaIcons 
-            tween = {toggleNavDisplay} 
-            scrolling = {isScroling}
-        >
-            <ul css={css`
+
+            <SocialMediaIcons
+                tween={toggleNavDisplay}
+                scrolling={isScroling}
+            >
+                <ul css={css`
                     font-size: 1.4rem;
+                    padding-right: 1rem;
                 `}>
-                <SocialLinks><a href="https://example.com" target="_blank" rel="noopener noreferrer"><FaFacebookSquare />sdsdsdd</a></SocialLinks>
-                <SocialLinks><a href=""><FaTwitter /></a></SocialLinks>
-                <SocialLinks><a href=""><FiInstagram/> </a></SocialLinks>
-                <SocialLinks><a href=""><SiTiktok/> </a></SocialLinks>
-                <SocialLinks><a href=""><ImSteam /></a></SocialLinks>
-                <SocialLinks><a href=""><FaItchIo /></a></SocialLinks>
-                <SocialLinks><a href=""><GrLinkedin /></a></SocialLinks>
-            </ul>
-        </SocialMediaIcons>
+                    <SocialLinks><a href="https://example.com" target="_blank" rel="noopener noreferrer"><FaFacebookSquare /></a></SocialLinks>
+                    <SocialLinks><a href=""><FaTwitter /></a></SocialLinks>
+                    <SocialLinks><a href=""><FiInstagram /> </a></SocialLinks>
+                    <SocialLinks><a href=""><SiTiktok /> </a></SocialLinks>
+                    <SocialLinks><a href=""><ImSteam /></a></SocialLinks>
+                    <SocialLinks><a href=""><FaItchIo /></a></SocialLinks>
+                    <SocialLinks><a href=""><GrLinkedin /></a></SocialLinks>
+                </ul>
+            </SocialMediaIcons>
         </SocialWrapper>
     )
 }
