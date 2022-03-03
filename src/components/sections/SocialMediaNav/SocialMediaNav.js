@@ -19,9 +19,11 @@ function SocialMediaNav({ tween }) {
 
     useEffect(() => {
 
-        if (!tween && !toggleNavDisplay) {
-            setToggleNavDisplay(!tween);
+        if (tween && !toggleNavDisplay) {
+            setToggleNavDisplay(true);
         }
+        console.log('this is toggleNavDisplay', toggleNavDisplay)
+        console.log('this is tween', tween)
     }, [tween])
     
     {/* TODO: On initial load bounce down socialmedianav and fix css for it */}
@@ -47,11 +49,38 @@ function SocialMediaNav({ tween }) {
         });
     }, [])
 
+    const bounce = keyframes`
+    from, 20%, 53%, 80%, to {
+        transform: translate3d(0,0,0);
+      }
+      0%{
+        transform: translate3d(0,-4rem,0);
+      }
+      40%, 43% {
+        transform: translate3d(0, -30px, 0);
+      }
+    
+      70% {
+        transform: translate3d(0, -15px, 0);
+      }
+    
+      90% {
+        transform: translate3d(0,-4px,0);
+      }
+    `
+    const moveDown = keyframes`
+        100%{
+            top: 0.1rem;
+        }
+    `
+
     const SocialWrapper = styled.section`
       position: fixed;
-      top: 0rem;
+      @supports (top: max(1em, 1px)){
+        top: max(calc(0rem), calc(3.8rem - max(${distanceFromTop} * 1px, 0rem) )); //- max(${distanceFromTop} * 1px, 0rem)
+    }
       width: 100%;
-      z-index: 100;
+      z-index: 100; //todo change to 100
     `
 
     const SocialMediaIcons = styled.section`
@@ -76,57 +105,17 @@ function SocialMediaNav({ tween }) {
         ol:last-child {
             padding-right: 0.4rem;
         }
-
-        position ${props => props.tween ? 'relative' : 'sticky'};
-        top: ${props => props.scrolling && props.tween ? '0rem' : ' 3.8rem'};
-        //position: relative;
-        @supports (top: max(1em, 1px)){
-            top: max(calc(0rem), calc(3.22rem - max(${distanceFromTop} * 1px, 0rem) )); //- max(${distanceFromTop} * 1px, 0rem)
-        }
-
-
-
-        //3.72rem; 
-        //relative and 3.8 on not scroll
-        //sticky with 0rem works on scroll
-        //z-index: 100;
-        //top: 4rem
-        //background-color: ${props =>
-            props.tween ? 'hotpink' : 'turquoise'};
-        //animation: ${props =>
-            props.tween ? '' : css`${bounce} 1s cubic-bezier(.8,.04,.83,.67) 1 forwards;`};
+        animation: ${props =>
+            props.tween ? css`${bounce} 1s cubic-bezier(.8,.04,.83,.67) 1 forwards;` : ''};
         @media (max-width: 784px) {
             display:none;
         };
-        //background: rgba(255, 255, 255, 0.2);
-        //border-radius: 16px;
         box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
         backdrop-filter: blur(5px);
         -webkit-backdrop-filter: blur(5px);
-        //border: 1px solid rgba(255, 255, 255, 0.3);
+
     `
-    const bounce = keyframes`
-        from, 20%, 53%, 80%, to {
-        transform: translate3d(0,0,0);
-        }
-    
-        40%, 43% {
-        transform: translate3d(0, 0, 0);
-        }
-    
-        70% {
-        transform: translate3d(0, 0, 0);
-        }
-    
-        90% {
-        transform: translate3d(0,0,0);
-        }
-    `
-    const moveDown = keyframes`
-        100%{
-            top: 0.1rem;
-        }
-    `
+
     const pulsate = keyframes`
     0% {
         transform: scale(1);
@@ -162,10 +151,13 @@ function SocialMediaNav({ tween }) {
     // `
     // : ''
     return (
-        <SocialWrapper >
+        <SocialWrapper
+            tween={toggleNavDisplay}
+        >
 
             <SocialMediaIcons
-                tween={toggleNavDisplay}
+                tween={tween}
+                toggle = {toggleNavDisplay}
                 scrolling={isScroling}
             >
                 <ul css={css`
