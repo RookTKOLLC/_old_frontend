@@ -57,6 +57,7 @@ const RecentPosts = styled.article`
   border: 1px solid rgba(255, 160, 57, 0.3);
   &:hover{
     animation: ${moveUp} 160ms linear 1 normal forwards;
+    box-shadow: 0 4px 35px rgba(255, 160, 57, 0.4);
   }
 `
 const Wrapper = styled.section`
