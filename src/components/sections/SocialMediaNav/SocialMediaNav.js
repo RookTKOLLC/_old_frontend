@@ -11,43 +11,33 @@ import { FaItchIo } from '@react-icons/all-files/fa/FaItchIo'
 import { GrLinkedin } from '@react-icons/all-files/gr/GrLinkedin'
 import { IconContext } from "react-icons";
 
-function SocialMediaNav({ tween }) {
-    const [isScroling, setIsScrolling] = useState(0);
-    const [toggleNavDisplay, setToggleNavDisplay] = useState(false)
+function SocialMediaNav() {
     const [distanceFromTop, setDistanceFromTop] = useState(0)
+    const [animationComplete, setAnimationComplete] = useState(false)
 
 
-    useEffect(() => {
 
-        if (tween && !toggleNavDisplay) {
-            setToggleNavDisplay(true);
-        }
-        console.log('this is toggleNavDisplay', toggleNavDisplay)
-        console.log('this is tween', tween)
-    }, [tween])
-    
-    {/* TODO: On initial load bounce down socialmedianav and fix css for it */}
 
-    const onScroll = () => {
-        const docEl = document.documentElement;
-        const windowScrollHeight = docEl.scrollTop;
-        const currentWindowHeight = docEl.scrollHeight - docEl.clientHeight;
-        const scroll = (windowScrollHeight / currentWindowHeight) * 100;
-        setIsScrolling(scroll)
-        console.log('isscrolling on scoai', isScroling)
-    };
+    {/* TODO: On initial load bounce down socialmedianav and fix css for it */ }
 
     useEffect(() => {
-        window.addEventListener("scroll", onScroll);
-        return () => window.removeEventListener('scroll', onScroll)
-    }, []);
-
-    useEffect(() => {
-        let root = document.documentElement;
-        document.addEventListener("scroll", evt => {
-            setDistanceFromTop(root.scrollTop);
-        });
+        let root = document.documentElement
+        let socialNavBar = document.getElementsByClassName("socialNav")[0];
+        socialNavBar.addEventListener("animationend", () => {
+            setAnimationComplete(true)
+        })
+        document.addEventListener("scroll", () => {
+            setDistanceFromTop(root.scrollTop)
+        })
     }, [])
+
+    useEffect(() => {
+        let root = document.documentElement
+        if(document.documentElement.scrollTop){
+            setAnimationComplete(true)
+            setDistanceFromTop(root.scrollTop)
+        }
+    },[distanceFromTop])
 
     const bounce = keyframes`
     from, 20%, 53%, 80%, to {
@@ -68,19 +58,13 @@ function SocialMediaNav({ tween }) {
         transform: translate3d(0,-4px,0);
       }
     `
-    const moveDown = keyframes`
-        100%{
-            top: 0.1rem;
-        }
-    `
-
     const SocialWrapper = styled.section`
       position: fixed;
       @supports (top: max(1em, 1px)){
         top: max(calc(0rem), calc(3.8rem - max(${distanceFromTop} * 1px, 0rem) )); //- max(${distanceFromTop} * 1px, 0rem)
     }
       width: 100%;
-      z-index: 100; //todo change to 100
+      z-index: 100; 
     `
 
     const SocialMediaIcons = styled.section`
@@ -106,7 +90,7 @@ function SocialMediaNav({ tween }) {
             padding-right: 0.4rem;
         }
         animation: ${props =>
-            props.tween ? css`${bounce} 1s cubic-bezier(.8,.04,.83,.67) 1 forwards;` : ''};
+            props.animationComplete ? '' : css`${bounce} 1s cubic-bezier(.8,.04,.83,.67) 1 forwards;`};
         @media (max-width: 784px) {
             display:none;
         };
@@ -145,20 +129,13 @@ function SocialMediaNav({ tween }) {
         padding-left: 3rem;
     `
 
-    // const tweenNav = props => props.toggleNavDisplay ?
-    // css`
-    //     animation: ${bounce} 1s ease infinite;
-    // `
-    // : ''
     return (
         <SocialWrapper
-            tween={toggleNavDisplay}
+            className={"socialNav"}
         >
 
             <SocialMediaIcons
-                tween={tween}
-                toggle = {toggleNavDisplay}
-                scrolling={isScroling}
+                animationComplete={animationComplete}
             >
                 <ul css={css`
                     font-size: 1.4rem;

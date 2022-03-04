@@ -48,7 +48,11 @@ const MainLayout = ({ children }) => {
     }
   }, [])
   
-
+  useEffect(() => {
+    if(window.innerWidth<= 800){
+     setMobileView(true)
+    }
+ }, [window.innerWidth])
 
 
   const observer = useRef(null);
@@ -87,17 +91,14 @@ const MainLayout = ({ children }) => {
         background-size: auto;
         background-attachment: fixed;
     `}>
-      {/* <title></title> */}
       {!mobileView ? 
       <> 
         <Header ref={myRef}/>
         <NavBar />
-        <SocialMediaNav tween={headerVisibility}/>
+        <SocialMediaNav />
         <ProgressBar />
       </>
-
       : <HamburgerMenu /> }
-      {/*  */}
       <Content>
         {children}
       </Content>
