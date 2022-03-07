@@ -114,7 +114,7 @@ const Index = ({ data }) => {
           border-style: solid;
           border-color: #ffa039;
       `}>
-        <CarouselHero featured = {featuredArticles}/>
+        <CarouselHero featured={featuredArticles} />
 
       </FullBleed>
 

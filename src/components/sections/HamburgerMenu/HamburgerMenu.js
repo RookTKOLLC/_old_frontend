@@ -60,7 +60,7 @@ export const HamburgerMenu = () => {
             css={css`
                 width:100%;
                 background-color: #171717; //#252423;
-                z-index: 1;
+                z-index: 1000;
                 position: sticky;
                 top:0px;
                 margin-bottom: 45px;
