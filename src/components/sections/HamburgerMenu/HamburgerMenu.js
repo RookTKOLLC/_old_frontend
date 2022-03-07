@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { css, keyframes } from '@emotion/react'
 import styled from '@emotion/styled'
 import { Link } from 'gatsby'
+import { Spin as Hamburger } from 'hamburger-react'
 
 export const HamburgerMenu = () => {
 
