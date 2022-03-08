@@ -145,7 +145,7 @@ const Index = ({ data }) => {
                 background-size: 6px 3px, 6px 3px, 3px 6px, 3px 6px;
                 background-position: 5% 0%, 98% 100%, 0% 100%, 100% 0px;
                 border-radius: 8px;
-                //transition: all 150ms ease-in-out; 
+                transition: all 150ms ease-in-out; 
                 position:absolute;
                 top:0;
                 left:0;
