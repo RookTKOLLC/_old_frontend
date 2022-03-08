@@ -127,11 +127,17 @@ export default function CarouselHero({ featured }) {
                                 text-decoration: none;
                                 position: relative;
                                 overflow: hidden;
-                                transition: background 275ms ease-in-out;
+                                transition: background 375ms ease-in-out;
                                 &:hover{
                                     color:white; 
                                     background: #ffa039;
+                                    p{
+                                        span{
+                                            background: #ffa039;
+                                        }
+                                    }
                                 }
+
                             `}>
                                 <h1
                                     css={css`
@@ -144,10 +150,21 @@ export default function CarouselHero({ featured }) {
                                 </h1>
                                 <p
                                     css={css`
-                                    margin: 0px 2rem 0px 1rem;  
-                                    padding: 0px 1rem 0px 0rem;`}
+                                        text-shadow: 1px 1px 1px #824708, 
+                                        3px 3px 5px #7F501C; 
+                                        margin: 0px 2rem 0px 0rem;  
+                                        padding: 0px 1rem 0px 0rem;
+                                        //width: 50%; //TODO change width depending on screen side
+                                        `}
                                 >
-                                    {node.excerpt}
+                                    <span
+                                        css={css`
+                                        padding: 0 1rem;
+                                        -webkit-box-decoration-break: clone;
+                                        box-decoration-break: clone;
+                                        transition: background 375ms ease-in-out;
+                                        `}
+                                    >{node.excerpt} </span>
                                 </p>
                             </Link>
                         </section>

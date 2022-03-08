@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { css, keyframes } from '@emotion/react'
 import styled from '@emotion/styled'
 import { Link } from 'gatsby'
-import { Spin as Hamburger } from 'hamburger-react'
+import { Sling as Hamburger } from 'hamburger-react'
 
 export const HamburgerMenu = () => {
 
@@ -64,7 +64,6 @@ export const HamburgerMenu = () => {
                 z-index: 1000;
                 position: sticky;
                 top:0px;
-                margin-bottom: 45px;
                 height: 4rem;
 
             `}
@@ -74,9 +73,9 @@ export const HamburgerMenu = () => {
                     css`
                     width: 2rem;
                     height: 1rem;
-                    top: 1rem;
+                    top: -0.5rem;
                     padding: 1rem 0.5rem 0.2rem;
-                    left: 1.5rem;
+                    left: 1rem;
                     position: relative;
                     content: '';
                     &:hover{
@@ -84,60 +83,16 @@ export const HamburgerMenu = () => {
                     }
                     `
                 }>
-                <span
-
-                    css={
-                        css`
-                        &:hover{
-                            color: #ffa039;
-                        }
-                    background-color: white;
-                    z-index: 10000;
-                    display: block;
-                    width: 2rem;
-                    height: 3px;
-                    content: '';
-                    poisiton:relative;
-                    top: 4rem;
-                    left: 1.5rem;
-                    &::before,&::after {
-                        height: 3px;
-                        background-color: white;
-                        position: absolute;
-                        content: '';
-                    }
-                    &::after{
-                        width: 1.2rem;
-                        top:0.5rem;
-                    }
-                    &::before{
-                        width: 2rem;
-                        bottom:0.5rem;
-                    }
-                    transition: transform 250ms ease-in-out, opacity 200ms linear;
-                    ${showMenu &&
-                            css`
-                        transform: rotate(45deg);
-                        &::after{
-                            opacity:0;
-                        }
-                        &::before{
-                            transform: rotate(90deg) translate(0.5rem);
-                        }
-                    `}
-                `
-                    }
-                >
-
-                </span>
+                    <Hamburger 
+                        hideOutline={false}
+                        rounded
+                    />
             </div>
-                        {/*
-                            TODO: fix jittery onload dropdown of btn hamburg menu
-                        */}
             <div
                 id="burgerBackground"
                 css={
                     css`
+                    position: absolute;
                         z-index: -10;
                         background-color: #171717;
                         color: white;
@@ -149,10 +104,10 @@ export const HamburgerMenu = () => {
                         ${showMenu &&
                             css`animation: ${bounceIn} 300ms ease 1 forwards`} ;
                         ${!showMenu &&
-                            css`animation: ${bounceOut} 100ms ease 1 forwards`}
+                            css`animation: ${bounceOut} 300ms ease 1 forwards`}
                         //transform: ${showMenu ? 'translateY(100%)' : 'translateY(0%)'};
                         //transition: transform 300ms cubic-bezier(.5,0,.5,1);
-                        position: absolute;
+
                         content: '';
                     `
                 }>
@@ -167,7 +122,9 @@ export const HamburgerMenu = () => {
                                 font-family: 'Montserrat';
                                 text-shadow: 1px 1px 2px rgb(170 170 170 / 62%);
                             `}
-                                to={'/' + `${item.toLowerCase()}`}>
+                                to={'/' + `${item.toLowerCase()}`}
+                                onClick={onClickHandler}
+                                >
                                 {item}
                             </Link>
                         </NavItem>
