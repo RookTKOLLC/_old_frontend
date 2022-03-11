@@ -34,9 +34,9 @@ module.exports = {
         path: `${__dirname}/gatsby-config.js`,
       },
     },
-    "gatsby-plugin-emotion", 
-    "gatsby-plugin-image", 
-    "gatsby-plugin-react-helmet", 
+    "gatsby-plugin-emotion",
+    "gatsby-plugin-image",
+    "gatsby-plugin-react-helmet",
     "gatsby-plugin-sitemap",
     {
       resolve: 'gatsby-plugin-manifest',
@@ -48,7 +48,8 @@ module.exports = {
       resolve: `gatsby-plugin-mdx`,
       options: {
         defaultLayouts: {
-          default: require.resolve("./src/components/layouts/post.js"),
+          posts: require.resolve("./src/components/layouts/Posts.js"),
+          default: require.resolve("./src/components/layouts/DefaultLayout.js"),
         },
       },
     },
