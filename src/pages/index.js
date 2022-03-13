@@ -1,5 +1,5 @@
 import * as React from 'react'
-import { graphql } from 'gatsby'
+import { graphql, Link } from 'gatsby'
 import styled from '@emotion/styled'
 import { Container } from '../components/layouts/Container'
 import { css, keyframes } from "@emotion/react"
@@ -9,34 +9,33 @@ import { FullBleed } from '../components/sections/FullBleed'
 import { StaticImage } from "gatsby-plugin-image"
 import CarouselHero from '../components/sections/CarouselHero/CarouselHero'
 
-export const query = graphql`
-  query {
-    allMdx(sort: {fields: frontmatter___date, order: DESC}) {
-      nodes {
-        excerpt(pruneLength: 270)
-        frontmatter {
-          date(formatString: "MMMM D, YYYY")
-          title
-          type
-          headingImage {
-            publicURL
-          }
-          featureHero
-        }
-        id
-        body
-        slug
-      }
-    }
-  }
-`
+// export const query = graphql`
+//   query {
+//     allMdx(sort: {fields: frontmatter___date, order: DESC}) {
+//       nodes {
+//         excerpt(pruneLength: 270)
+//         frontmatter {
+//           date(formatString: "MMMM D, YYYY")
+//           title
+//           type
+//           headingImage {
+//             publicURL
+//           }
+//           featureHero
+//         }
+//         id
+//         body
+//         slug
+//       }
+//     }
+//   }
+// `
 
 const borderAnimation = keyframes`
   to {
     background-position: 50% 0%, 50% 100%, 0% 0%, 100% 100%;
   }
 `
-
 
 const moveUp = keyframes`
   to {
@@ -85,16 +84,29 @@ const HeroSelection = styled.div`
   border-radius: 8px;
 `
 
-const Index = ({ data }) => {
-  // const [bgImage, setBgImage] = useState("")
-  // const im = import('../media/images/dropkick_demo.gif').then(image => {
-  //   setBgImage(image)
-  // });
-  const featuredArticles = data.allMdx.nodes.filter((node) => node.frontmatter.featureHero);
-  const nonFeaturedArticles = data.allMdx.nodes.filter((node) => !node.frontmatter.featureHero);
-  console.log(featuredArticles)
-  return (
 
+const Index = ({ data, location }) => {
+  console.log('index data', data)
+  //const siteTitle = data.site.siteMetadata?.title || `Title`
+  const posts = data.allMdx.nodes
+  const featuredArticles = posts.filter((node) => node.frontmatter.featured);
+  const nonFeaturedArticles = posts.filter((node) => !node.frontmatter.featured);
+  console.log('posts', posts)
+  // if (posts.length === 0) {
+  //   return (
+  //     // <Layout location={location} title={siteTitle}>
+  //     //   <Seo title="All posts" />
+  //     //   <Bio />
+  //       <p>
+  //         No blog posts found. Add markdown posts to "content/blog" (or the
+  //         directory you specified for the "gatsby-source-filesystem" plugin in
+  //         gatsby-config.js).
+  //       </p>
+  //     // </Layout>
+  //   )
+  // }
+
+  return (
     <Container css={css`
       display: grid;
       grid-template-columns: 1fr min(80ch, calc(100% - 64px)) 1fr;
@@ -163,7 +175,7 @@ const Index = ({ data }) => {
           `}
                 onClick={event => {
                   event.preventDefault()
-                  navigate("/" + node.slug)
+                  navigate(node.fields.slug)
                 }}
               >
                 <Wrapper
@@ -262,7 +274,79 @@ const Index = ({ data }) => {
         }
       </ul>
     </Container>
+    // <div>
+    //   <ol style={{ listStyle: `none` }}>
+    //     {posts.map(post => {
+    //       const title = post.frontmatter.title || post.fields.slug
 
+    //       return (
+    //         <li key={post.fields.slug}>
+    //           <article
+    //             className="post-list-item"
+    //             itemScope
+    //             itemType="http://schema.org/Article"
+    //           >
+    //             <header>
+    //               <h2>
+    //                 <Link to={post.fields.slug} itemProp="url">
+    //                   <span itemProp="headline">{title}</span>
+    //                 </Link>
+    //               </h2>
+    //               <small>{post.frontmatter.date}</small>
+    //             </header>
+    //             <section>
+    //               <p
+    //                 dangerouslySetInnerHTML={{
+    //                   __html: post.frontmatter.description || post.excerpt,
+    //                 }}
+    //                 itemProp="description"
+    //               />
+    //             </section>
+    //           </article>
+    //         </li>
+    //       )
+    //     })}
+    //   </ol>
+    //   </div>
   )
 }
+
 export default Index
+
+export const pageQuery = graphql`
+  query {
+    site {
+      siteMetadata {
+        title
+      }
+    }
+    allMdx(sort: { fields: [frontmatter___date], order: DESC }) {
+      nodes {
+        excerpt(pruneLength: 270)
+        fields {
+          slug
+        }
+        frontmatter {
+          date(formatString: "MMMM D, YYYY")
+          featured
+          type
+          subType
+          title
+          author
+          editor
+          headingImage {
+            publicURL
+          }
+        }
+        wordCount {
+          paragraphs
+          sentences
+          words
+        }
+      }
+      pageInfo {
+        perPage
+      }
+    }
+  }
+`

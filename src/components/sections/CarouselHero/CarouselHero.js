@@ -121,7 +121,7 @@ export default function CarouselHero({ featured }) {
                         `}
                         >
                             <Link
-                                to={`/${node.slug}`}
+                                to={`${node.fields.slug}`}
                                 css={css` 
                                 color: white; 
                                 text-decoration: none;
