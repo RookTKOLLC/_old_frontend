@@ -16,33 +16,18 @@ min-height: calc(100vh - 150px);
 `
 const shortcodes = {}
 
-// // export const query = graphql`
-// //   query {
-// //     allMdx(sort: {fields: frontmatter___date, order: DESC}) {
-// //       nodes {
-// //         frontmatter {
-// //           date(formatString: "MMMM D, YYYY")
-// //           title
-// //         }
-// //         id
-// //         body
-// //       }
-// //     }
-// //   }
-// // `
-// export default function Post({ children }) {
-
-//   return (
-//     <MDXProvider components={shortcodes}>
-//       <Content>
-//         <Container>
-//           <p>POST</p>
-//           {children}
-//         </Container>
-//       </Content>
-//     </MDXProvider>
-//   )
-// }
+const Toc = styled.ul`
+  position: fixed;
+  left: calc(50% + 400px);
+  top: 110px;
+  max-height: 70vh;
+  width: 310px;
+  display: flex;
+`
+const InnerScroll = styled.div`
+  overflow: hidden;
+  overflow-y: scroll;
+`
 
 
 const BlogPostTemplate = ({ data, location }) => {
@@ -56,6 +41,7 @@ const BlogPostTemplate = ({ data, location }) => {
     //     title={post.frontmatter.title}
     //     description={post.frontmatter.description || post.excerpt}
     //   />
+<>
 
     <MDXProvider components={shortcodes}>
       <Content>
@@ -136,12 +122,14 @@ const BlogPostTemplate = ({ data, location }) => {
           <p>{post.frontmatter.date}</p>
         </header> */}
           <article css={css`
-            z-index:1000;
+            z-index:1;
           `}>
             <MDXRenderer >{post.body}</MDXRenderer>
           </article>
 
-          <nav className="blog-post-nav">
+          <nav css={css`
+            z-index:1;
+          `}>
             <ul
               style={{
                 display: `flex`,
@@ -171,6 +159,22 @@ const BlogPostTemplate = ({ data, location }) => {
       </Content>
     </MDXProvider>
 
+{typeof post.tableOfContents.items === 'undefined' ? null : (
+  <Toc>
+    <InnerScroll>
+      <h2>Table of contents</h2>
+      {post.tableOfContents.items.map(i => (
+        <li key={i.url}>
+          <a href={i.url} key={i.url}>
+            {i.title}
+          </a>
+        </li>
+      ))}
+    </InnerScroll>
+  </Toc>
+)}
+
+</>
 
 
   )
@@ -204,6 +208,7 @@ export const pageQuery = graphql`
           publicURL
         }
       }
+      tableOfContents
       fields {
         slug
       }
