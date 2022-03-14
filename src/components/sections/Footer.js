@@ -2,6 +2,7 @@ import * as React from 'react'
 import styled from '@emotion/styled'
 import { css } from '@emotion/react'
 import Logo from '../../media/images/RookTKO.png'
+import { Link, useStaticQuery, graphql } from 'gatsby'
 
 const Newsletter = styled.section`
     grid-area: Newsletter;
@@ -24,21 +25,25 @@ const SiteMap = styled.section`
     grid-template-areas:
     "Heading Heading Heading"
     "Link Link Link"
+    
 `
 
 const Heading = styled.h6`
     grid-area: Heading;
     margin: 0px;
-    display: flex;
+    display: grid;
     justify-content: center;
+    align-content: center;
     font-size: 1.2rem;
     text-shadow: 1px 1px 2px rgba(170, 170, 170, 0.623);
 `
 
-const Link = styled.ul`
+const FooterLinks = styled.ul`
     grid-area: Link;
-    display: flex;
+    display: grid;
     justify-content: center;
+    align-content: center;
+    grid-auto-flow: column;
     margin: 0px;
 `
 
@@ -48,43 +53,44 @@ const MainFooter = styled.section`
     grid-template-row: auto;
     grid-template-areas:
         "Newsletter     Newsletter      Newsletter  Newsletter"
-        "LogoCopyright  LogoCopyright   SiteMap     SiteMap"
-        ".              .               .           .";
+        "LogoCopyright  LogoCopyright   SiteMap     SiteMap";
     background-color: #171717;
     width: 100%;
     color: #FFF;
-    height: 120px;
+    height: 180px;
     grid-gap: 10px;
 `
 
 
-export default function Footer(){
+export default function Footer() {
 
-    return(
+    return (
         <MainFooter>
             <Newsletter>Subscribe to me now</Newsletter>
             <LogoCopyright>
-                <img 
-                src={Logo} 
-                style={{
-                    width:'4rem'
-                }}
-                alt="Company Logo"
+                <img
+                    src={Logo}
+                    style={{
+                        width: '4rem'
+                    }}
+                    alt="Company Logo"
                 />
                 <span>© 2020-present RookTKO LLC. All Rights Reserved.</span></LogoCopyright>
             <SiteMap>
                 <Heading>Links</Heading>
-                <Link css={css`
-                    display:flex;
-                    list-style: none;
-                    li{
-                        padding-right: 0.5rem;
-                    }
+                <FooterLinks css={css`
+                        padding: 0rem;
+                        li{
+                            padding:0rem 0.5rem;
+                            list-style-type: none;
+                        }
+
                 `}>
-                    <li>ContactUs</li>
-                    <li>Jobs</li>
-                    <li>???</li>
-                </Link>
+                    <li><Link>ContactUs</Link></li>
+                    <li><Link>Jobs</Link></li>
+                    <li><Link>About Us</Link></li>
+                </FooterLinks>
+
             </SiteMap>
         </MainFooter>
     )

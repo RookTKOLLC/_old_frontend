@@ -181,25 +181,34 @@ const Index = ({ data, location }) => {
                 <Wrapper
 
                   css={css`
+                  &:before{
+                    background-origin: padding-box;
+                    background-color: white;
+                    background: linear-gradient(0deg, rgba(0,0,0, 0.9) 15%,  rgba(0,0,0, 0) 100%), url(${node.frontmatter.headingImage.publicURL});
+                    -webkit-mask-image:-webkit-gradient(linear, left top, left bottom, from(rgba(0,0,0,1)), to(rgba(0,0,0,0)));
+                    mask-image: linear-gradient(to bottom, rgba(0,0,0,1), rgba(0,0,0,0));
+                    background-position: center;
+                    background-size: cover;
+                    background-repeat: no-repeat;
+                    content:"";
+                    top:0px;
+                    left: 0px;
+                    right: 0px;
+                    bottom: 0px;
+                    position: absolute;
+                    opacity: 0.34;
+                    filter:  blur(4px);
+                    z-index:0;
+                  }
 
-                &:hover::before{
-                  background-origin: padding-box;
-                  background-color: white;
-                  background: linear-gradient(0deg, rgba(0,0,0, 0.7) 45%,  rgba(0,0,0, 0) 100%), url(${node.frontmatter.headingImage.publicURL});
-                  background-position: center;
-                  background-size: cover;
-                  background-repeat: no-repeat;
-                  content:"";
-                  top:3px;
-                  left: 3px;
-                  right: 3px;
-                  bottom: 3px;
-                  position: absolute;
-                  opacity: 1;
-                  z-index:0;
-                  filter:  opacity(70%) blur(2px);
-
-                };           
+                    &:hover::before{
+                      top:3px;
+                      left: 3px;
+                      right: 3px;
+                      bottom: 3px;
+                      opacity: 1;
+                      filter: blur(0px);
+                    };           
             `}>
 
                   <heading css={css`
@@ -211,7 +220,7 @@ const Index = ({ data, location }) => {
                     <h2 css={css`
                   //display:inline;
                     position: relative;
-                    top: -1.5rem;
+                    transform: translateY(-1.5rem);
                     text-align: center;
                     background-color: #242424;
                     float: right;

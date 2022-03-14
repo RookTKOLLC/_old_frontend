@@ -17,6 +17,7 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
               fields {
                 slug
               }
+              slug
               excerpt(pruneLength: 270)
               frontmatter {
                 date(formatString: "MMMM D, YYYY")

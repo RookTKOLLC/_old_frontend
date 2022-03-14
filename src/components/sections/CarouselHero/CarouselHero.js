@@ -127,7 +127,7 @@ export default function CarouselHero({ featured }) {
                                 text-decoration: none;
                                 position: relative;
                                 overflow: hidden;
-                                transition: background 375ms ease-in-out;
+                                transition: background 175ms ease-in-out;
                                 &:hover{
                                     color:white; 
                                     background: #ffa039;
@@ -143,15 +143,16 @@ export default function CarouselHero({ featured }) {
                                     css={css`
                                     display:inline;
                                     margin: 0px 1rem 0px 0px;    
-                                    text-shadow: 1px 1px 2px rgba(170, 170, 170, 0.623);
+                                    text-shadow: 1px 1px 1px #824708, 3px 3px 5px #7F501C; 
                                     padding: 0px 1rem 0px 1rem;
+                                    -webkit-box-decoration-break: clone;
+                                    box-decoration-break: clone;
                                 `}>
                                     {node.frontmatter.title}
                                 </h1>
                                 <p
                                     css={css`
-                                        text-shadow: 1px 1px 1px #824708, 
-                                        3px 3px 5px #7F501C; 
+                                        text-shadow: 1px 1px 1px #824708, 3px 3px 5px #7F501C; 
                                         margin: 0px 2rem 0px 0rem;  
                                         padding: 0px 1rem 0px 0rem;
                                         //width: 50%; //TODO change width depending on screen side

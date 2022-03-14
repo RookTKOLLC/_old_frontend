@@ -49,7 +49,7 @@ const BlogPostTemplate = ({ data, location }) => {
   const post = data.mdx
   const siteTitle = data.site.siteMetadata?.title || `Title`
   const { previous, next } = data
-  console.log('data.mdx', data.mdx)
+  console.log('data.mdx', data)
   return (
     // <Layout location={location} title={siteTitle}>
     //   <Seo
@@ -57,28 +57,76 @@ const BlogPostTemplate = ({ data, location }) => {
     //     description={post.frontmatter.description || post.excerpt}
     //   />
 
-      <MDXProvider components={shortcodes}>
-        <Content>
-          <Container>
+    <MDXProvider components={shortcodes}>
+      <Content>
+        <Container>
           <FullBleed css={css`
-            text-align: center;
-            background-origin: padding-box;
+                  position:relative;
+                  height: 40rem;
+                  text-align: center;
+                  background-origin: padding-box;
                   background-color: white;
-                  background: linear-gradient(0deg, rgba(0,0,0, 0.7) 45%,  rgba(0,0,0, 0) 100%), url(${post.frontmatter.headingImage.publicURL});
+                  background: linear-gradient(0deg, rgba(0,0,0, 0.9) 15%,  rgba(0,0,0, 0) 100%), url(${post.frontmatter.headingImage.publicURL});
                   -webkit-mask-image:-webkit-gradient(linear, left top, left bottom, from(rgba(0,0,0,1)), to(rgba(0,0,0,0)));
                   mask-image: linear-gradient(to bottom, rgba(0,0,0,1), rgba(0,0,0,0));
                   background-position: center;
                   background-size: cover;
                   background-repeat: no-repeat;
+                  text-shadow: 1px 1px 1px #824708, 3px 3px 5px #7F501C; 
+                  margin-bottom: -15rem;
           `}>
-            <h1>{post.frontmatter.title}</h1>
-              <span>Last Edit: {post.frontmatter.date}</span> <br />
-              <span>  Author: {post.frontmatter.author}</span> <br />
-              <span> Editor: {post.frontmatter.editor}</span>
+            <section css={css`
+              padding:1rem 0rem 0rem;
+            `}>
+              <Link to={post.fields.slug}
+                css={css` 
+                //padding: 0rem 1rem;
+                  color: white; 
+                  text-decoration: none;
+                  position: relative;
+                  overflow: hidden;
+                  transition: background 175ms ease-in-out;
+                  h1{
+                    font-size: 3rem;
+                    -webkit-box-decoration-break: clone;
+                    box-decoration-break: clone;
+                  }
+                  &:hover{
+                      color:white; 
+                      background: #ffa039;
+                      p{
+                          span{
+                              background: #ffa039;
+                          }
+                      }
+                  }
+                  span{
+                    -webkit-box-decoration-break: clone;
+                    box-decoration-break: clone;
+                    padding: 0.2rem 1rem;
+                  }
+              `}
+              >
+                <h1
+                  css={css`
+                  display:inline;   
+                  text-shadow: 1px 1px 1px #824708, 3px 3px 5px #7F501C; 
+                  padding: 0px 1rem 0px 1rem;
+              `}>{post.frontmatter.title}</h1><br /> <br />
+                <span>Last Edit: {post.frontmatter.date}</span> <br />
+                <span>  Author: {post.frontmatter.author}</span> <br />
+                <span> Editor: {post.frontmatter.editor}</span>
 
-            
+
+              </Link>
+
+
+            </section>
+
+
+
           </FullBleed>
-            {/* <article
+          {/* <article
         className="blog-post"
         itemScope
         itemType="http://schema.org/Article"
@@ -87,36 +135,41 @@ const BlogPostTemplate = ({ data, location }) => {
           <h1 itemProp="headline">{post.frontmatter.title}</h1>
           <p>{post.frontmatter.date}</p>
         </header> */}
-            <MDXRenderer>{post.body}</MDXRenderer>
-            <nav className="blog-post-nav">
-        <ul
-          style={{
-            display: `flex`,
-            flexWrap: `wrap`,
-            justifyContent: `space-between`,
-            listStyle: `none`,
-            padding: 0,
-          }}
-        >
-          <li>
-            {previous && (
-              <Link to={previous.fields.slug} rel="prev">
-                ← {previous.frontmatter.title}
-              </Link>
-            )}
-          </li>
-          <li>
-            {next && (
-              <Link to={next.fields.slug} rel="next">
-                {next.frontmatter.title} →
-              </Link>
-            )}
-          </li>
-        </ul>
-      </nav>
-          </Container>
-        </Content>
-      </MDXProvider>
+          <article css={css`
+            z-index:1000;
+          `}>
+            <MDXRenderer >{post.body}</MDXRenderer>
+          </article>
+
+          <nav className="blog-post-nav">
+            <ul
+              style={{
+                display: `flex`,
+                flexWrap: `wrap`,
+                justifyContent: `space-between`,
+                listStyle: `none`,
+                padding: 0,
+              }}
+            >
+              <li>
+                {previous && (
+                  <Link to={previous.fields.slug} rel="prev">
+                    ← {previous.frontmatter.title}
+                  </Link>
+                )}
+              </li>
+              <li>
+                {next && (
+                  <Link to={next.fields.slug} rel="next">
+                    {next.frontmatter.title} →
+                  </Link>
+                )}
+              </li>
+            </ul>
+          </nav>
+        </Container>
+      </Content>
+    </MDXProvider>
 
 
 
@@ -136,6 +189,7 @@ export const pageQuery = graphql`
         title
       }
     }
+    
     mdx(id: { eq: $id }) {
       id
       excerpt(pruneLength: 160)
@@ -149,6 +203,14 @@ export const pageQuery = graphql`
         headingImage {
           publicURL
         }
+      }
+      fields {
+        slug
+      }
+      wordCount {
+        paragraphs
+        sentences
+        words
       }
     }
     previous: mdx(id: { eq: $previousPostId }) {
