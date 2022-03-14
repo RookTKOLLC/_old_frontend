@@ -1,2 +1,0 @@
-"use strict";(self.webpackChunkrook_tko_frontend=self.webpackChunkrook_tko_frontend||[]).push([[575],{5388:function(n,o,t){t.r(o),t.d(o,{default:function(){return e}});t(7294);var r=t(3431);function e(){return(0,r.tZ)("div",null,"Hello world!")}}}]);
-//# sourceMappingURL=component---src-pages-index-1-js-a4b3a65f21c0d692b730.js.map
