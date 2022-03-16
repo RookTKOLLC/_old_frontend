@@ -9,7 +9,9 @@ import { FaTwitter } from '@react-icons/all-files/fa/FaTwitter'
 import { SiTiktok } from '@react-icons/all-files/si/SiTiktok'
 import { FaItchIo } from '@react-icons/all-files/fa/FaItchIo'
 import { GrLinkedin } from '@react-icons/all-files/gr/GrLinkedin'
-import { IconContext } from "react-icons";
+// import { IconContext } from "react-icons";
+import {RiMoonClearLine} from '@react-icons/all-files/ri/RiMoonClearLine'
+import {FaSun} from '@react-icons/all-files/fa/FaSun'
 
 function SocialMediaNav() {
     const [distanceFromTop, setDistanceFromTop] = useState(0)
