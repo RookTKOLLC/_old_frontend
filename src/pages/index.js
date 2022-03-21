@@ -10,6 +10,7 @@ import { StaticImage } from "gatsby-plugin-image"
 import CarouselHero from '../components/sections/CarouselHero/CarouselHero'
 import { HiChevronRight } from '@react-icons/all-files/hi/HiChevronRight'
 
+
 // export const query = graphql`
 //   query {
 //     allMdx(sort: {fields: frontmatter___date, order: DESC}) {
@@ -254,14 +255,14 @@ const Index = ({ data, location }) => {
 
 
                   <p css={css`
-              color: #999999;
-              margin: 0rem;
-              position: relative;
-              //top: -1rem;
-              font-size: 0.8rem;
-              padding: 0rem 2rem 1rem;
-              line-height: 0;
-            `}> Posted: {node.frontmatter.date}
+                    color: #999999;
+                    margin: 0rem;
+                    position: relative;
+                    //top: -1rem;
+                    font-size: 0.8rem;
+                    padding: 0rem 2rem 1rem;
+                    line-height: 0;
+                `}> Posted: {node.frontmatter.date}
                   </p>
                   <p css={css`
                   padding: 0.2rem 2rem  2rem;
