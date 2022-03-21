@@ -8,6 +8,7 @@ import { navigate } from "gatsby"
 import { FullBleed } from '../components/sections/FullBleed'
 import { StaticImage } from "gatsby-plugin-image"
 import CarouselHero from '../components/sections/CarouselHero/CarouselHero'
+import { HiChevronRight } from '@react-icons/all-files/hi/HiChevronRight'
 
 // export const query = graphql`
 //   query {
@@ -55,7 +56,7 @@ const RecentPosts = styled.article`
   -webkit-backdrop-filter: blur(2px);
   border: 1px solid rgba(255, 160, 57, 0.3);
   &:hover{
-    animation: ${moveUp} 160ms linear 1 normal forwards;
+    animation: ${moveUp} 360ms ease-in-out 1 normal forwards;
     box-shadow: 0 4px 35px rgba(255, 160, 57, 0.4);
   }
 `
@@ -199,6 +200,7 @@ const Index = ({ data, location }) => {
                     opacity: 0.34;
                     filter:  blur(4px);
                     z-index:0;
+                     transition: all .3s ease-in-out;
                   }
 
                     &:hover::before{
@@ -267,8 +269,48 @@ const Index = ({ data, location }) => {
                   position: relative;
                 `}>{node.excerpt}
                     <br />
-                    <span>
-                      Read More -&gt;
+                    <span css={css`
+                      display: inline-block;
+                    `}>
+                    <span  css={css`
+                            text-decoration: none;
+                            color: #ffffff;
+                            font-family: 'Montserrat';
+                            transition: color .3s ease-in-out;
+                            &:after{
+                                content: "";
+                                width: 0;
+                                display: block;
+                                position: relative;
+                                bottom: 6px;
+                                height: 4px;
+                                left: 0;
+                                opacity: 1;
+                                background-color: #ffa039;
+                                transition: all .3s ease-in-out;
+                            }
+                        &:hover::after{
+                            width:80%;
+                        }
+                        &:hover{
+                          color: #ffa039;
+                        }
+                    `}>Read More 
+                    <span css={css`
+                      transform:translateY(10%);
+                      display: inline-block;
+                      transition: transform .3s ease-in-out;
+                    `}>
+                    <HiChevronRight />
+                    <HiChevronRight css={css`
+                      transform: translateX(-12px);
+                    `}/>
+                    <HiChevronRight css={css`
+                      transform: translateX(-24px);
+                    `}/>
+                    </span>
+                     </span>
+                      
                     </span>
 
                   </p>

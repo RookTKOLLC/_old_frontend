@@ -55,9 +55,25 @@ export default function NavBar() {
                         >
                             <Link to={'/' + `${value.toLowerCase()}`}
                                 css={css`
-                            text-decoration: none;
-                            color: #ffffff;
-                            font-family: 'Montserrat';
+                                        text-decoration: none;
+                                        color: #ffffff;
+                                        font-family: 'Montserrat';
+                                        &:after{
+                                            content: "";
+                                            width: 0;
+                                            display: block;
+                                            position: relative;
+                                            bottom: 6px;
+                                            height: 4px;
+                                            left: 0;
+                                            opacity: 1;
+                                            background-color: #ffa039;
+                                            transition: all .3s ease-in-out;
+                                        }
+                                    &:hover::after{
+                                        width:100%;
+                                    }
+
                         `}> {value} </Link>
                         </li>)}
                 </NavBarLinks>

@@ -19,6 +19,7 @@ const CompanyName = styled.h1`
     text-shadow: 1px 1px 2px rgba(170, 170, 170, 0.623);
     display: flex;
     justify-content: center;
+    transition: color .3s ease-in-out;
     &:before,
     &:after {
         display: inline-block;

@@ -1,9 +1,13 @@
 import React from "react";
 import './src/styles/globalReset.css'
 import './src/styles/theme.css'
-import globalStyles from "./src/styles/globalStyles";
-import { css } from '@emotion/react';
-import globalReset from "./src/styles/globalReset";
+import '@fontsource/montserrat/900.css'
+import "@fontsource/playfair-display/400.css"
+import "@fontsource/fira-sans-condensed/400.css"
+
+// import globalStyles from "./src/styles/globalStyles";
+// import { css } from '@emotion/react';
+// import globalReset from "./src/styles/globalReset";
 import MainLayout from './src/components/layouts/MainLayout'
 
 export const wrapRootElement = ({ element, props }) => {

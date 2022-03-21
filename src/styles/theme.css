@@ -8,6 +8,7 @@
     color: #fff
   }
   a{
+    transition: all .3s ease-in-out;
     color: #ffa039
   }
   a:hover {
