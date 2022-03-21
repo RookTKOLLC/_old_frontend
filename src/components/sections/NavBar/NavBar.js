@@ -1,3 +1,5 @@
+/** @jsx jsx */
+import { jsx } from "theme-ui"
 import React, { useEffect, useState } from 'react'
 import styled from '@emotion/styled'
 import { css, keyframes } from "@emotion/react"
@@ -48,6 +50,15 @@ export default function NavBar() {
         <NavWrapper >
             <NavBarContainer>
                 <NavBarLinks>
+                    {/* <span       sx={{
+        // this uses the value from `theme.space[4]`
+        padding: 4,
+        // these use values from `theme.colors`
+        color: "background",
+        backgroundColor: "primary",
+      }}>
+                        sassas
+                    </span> */}
                     {navItems.map((value, idx) =>
                         <li
                             key={idx}

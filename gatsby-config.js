@@ -6,7 +6,7 @@ module.exports = {
     description: `The strive for the moon game dev studio.`
   },
   plugins: [
-    'gatsby-plugin-theme-switcher',
+    "gatsby-plugin-theme-ui",
     "gatsby-plugin-sharp",
     "gatsby-transformer-sharp",
     "gatsby-plugin-emotion",
