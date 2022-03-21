@@ -13,10 +13,11 @@ import { GrLinkedin } from '@react-icons/all-files/gr/GrLinkedin'
 import {RiMoonClearLine} from '@react-icons/all-files/ri/RiMoonClearLine'
 import {FaSun} from '@react-icons/all-files/fa/FaSun'
 
+
 function SocialMediaNav() {
     const [distanceFromTop, setDistanceFromTop] = useState(0)
     const [animationComplete, setAnimationComplete] = useState(false)
-
+    const [toggle, setToggle] = useState(false)
 
 
 
@@ -146,10 +147,12 @@ function SocialMediaNav() {
                     <SocialLinks><a href="https://example.com" target="_blank" rel="noopener noreferrer"><FaFacebookSquare /></a></SocialLinks>
                     <SocialLinks><a href=""><FaTwitter /></a></SocialLinks>
                     <SocialLinks><a href=""><FiInstagram /> </a></SocialLinks>
-                    <SocialLinks><a href=""><SiTiktok /> </a></SocialLinks>
+                    {/* <SocialLinks><a href=""><SiTiktok /> </a></SocialLinks>
                     <SocialLinks><a href=""><ImSteam /></a></SocialLinks>
                     <SocialLinks><a href=""><FaItchIo /></a></SocialLinks>
-                    <SocialLinks><a href=""><GrLinkedin /></a></SocialLinks>
+                    <SocialLinks><a href=""><GrLinkedin /></a></SocialLinks> */}
+                    <FaSun />
+                    <RiMoonClearLine />
                 </ul>
             </SocialMediaIcons>
         </SocialWrapper>
