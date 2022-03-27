@@ -16,17 +16,27 @@ min-height: calc(100vh - 150px);
 `
 const shortcodes = {}
 
-const Toc = styled.ul`
+const TableOfContentsWrapper = styled.ul`
   position: fixed;
   left: calc(50% + 400px);
-  top: 110px;
+  top: 15rem;
   max-height: 70vh;
-  width: 310px;
+  width: 20rem;
   display: flex;
+  padding-left:40px;
 `
-const InnerScroll = styled.div`
+const TableOfContents = styled.div`
   overflow: hidden;
-  overflow-y: scroll;
+  //overflow-y: scroll;
+  h2{
+    padding-bottom: 2px;
+  }
+  &:hover{
+    h2 {
+      padding-bottom: 0px;
+      border-bottom: 2px dashed #ffa039;
+    }
+  }
 `
 
 
@@ -41,12 +51,12 @@ const BlogPostTemplate = ({ data, location }) => {
     //     title={post.frontmatter.title}
     //     description={post.frontmatter.description || post.excerpt}
     //   />
-<>
+    <>
 
-    <MDXProvider components={shortcodes}>
-      <Content>
-        <Container>
-          <FullBleed css={css`
+      <MDXProvider components={shortcodes}>
+        <Content>
+          <Container>
+            <FullBleed css={css`
                   position:relative;
                   height: 40rem;
                   text-align: center;
@@ -61,11 +71,11 @@ const BlogPostTemplate = ({ data, location }) => {
                   text-shadow: 1px 1px 1px #824708, 3px 3px 5px #7F501C; 
                   margin-bottom: -15rem;
           `}>
-            <section css={css`
+              <section css={css`
               padding:1rem 0rem 0rem;
             `}>
-              <Link to={post.fields.slug}
-                css={css` 
+                <Link to={post.fields.slug}
+                  css={css` 
                 //padding: 0rem 1rem;
                   color: white; 
                   text-decoration: none;
@@ -92,27 +102,27 @@ const BlogPostTemplate = ({ data, location }) => {
                     padding: 0.2rem 1rem;
                   }
               `}
-              >
-                <h1
-                  css={css`
+                >
+                  <h1
+                    css={css`
                   display:inline;   
                   text-shadow: 1px 1px 1px #824708, 3px 3px 5px #7F501C; 
                   padding: 0px 1rem 0px 1rem;
               `}>{post.frontmatter.title}</h1><br /> <br />
-                <span>Last Edit: {post.frontmatter.date}</span> <br />
-                <span>  Author: {post.frontmatter.author}</span> <br />
-                <span> Editor: {post.frontmatter.editor}</span>
+                  <span>Last Edit: {post.frontmatter.date}</span> <br />
+                  <span>  Author: {post.frontmatter.author}</span> <br />
+                  <span> Editor: {post.frontmatter.editor}</span>
 
 
-              </Link>
+                </Link>
 
 
-            </section>
+              </section>
 
 
 
-          </FullBleed>
-          {/* <article
+            </FullBleed>
+            {/* <article
         className="blog-post"
         itemScope
         itemType="http://schema.org/Article"
@@ -121,60 +131,133 @@ const BlogPostTemplate = ({ data, location }) => {
           <h1 itemProp="headline">{post.frontmatter.title}</h1>
           <p>{post.frontmatter.date}</p>
         </header> */}
-          <article css={css`
+            <article css={css`
             z-index:1;
           `}>
-            <MDXRenderer >{post.body}</MDXRenderer>
-          </article>
+              <MDXRenderer >{post.body}</MDXRenderer>
+            </article>
 
-          <nav css={css`
+            <nav css={css`
             z-index:1;
           `}>
-            <ul
-              style={{
-                display: `flex`,
-                flexWrap: `wrap`,
-                justifyContent: `space-between`,
-                listStyle: `none`,
-                padding: 0,
-              }}
-            >
-              <li>
-                {previous && (
-                  <Link to={previous.fields.slug} rel="prev">
-                    ← {previous.frontmatter.title}
-                  </Link>
-                )}
-              </li>
-              <li>
-                {next && (
-                  <Link to={next.fields.slug} rel="next">
-                    {next.frontmatter.title} →
-                  </Link>
-                )}
-              </li>
-            </ul>
-          </nav>
-        </Container>
-      </Content>
-    </MDXProvider>
+              <ul
+                style={{
+                  display: `flex`,
+                  flexWrap: `wrap`,
+                  justifyContent: `space-between`,
+                  listStyle: `none`,
+                  padding: 0,
+                }}
+              >
+                <li>
+                  {previous && (
+                    <Link to={previous.fields.slug} rel="prev" css={css`
+                      text-decoration: none;
+                      color: #ffffff;
+                      font-family: 'Montserrat';
+                      &:after{
+                          content: "";
+                          width: 0;
+                          display: block;
+                          position: relative;
+                          bottom: 6px;
+                          height: 4px;
+                          left: 0;
+                          opacity: 1;
+                          background-color: #ffa039;
+                          transition: all .3s ease-in-out;
+                      }
+                  &:hover::after{
+                      width:100%;
+                  }
 
-{typeof post.tableOfContents.items === 'undefined' ? null : (
-  <Toc>
-    <InnerScroll>
-      <h2>Table of contents</h2>
-      {post.tableOfContents.items.map(i => (
-        <li key={i.url}>
-          <a href={i.url} key={i.url}>
-            {i.title}
-          </a>
-        </li>
-      ))}
-    </InnerScroll>
-  </Toc>
-)}
+  `}>
+                      ← {previous.frontmatter.title.split(' ').slice(0, 5).join(' ') + ' . . .'}
+                    </Link>
+                  )}
+                </li>
+                <li>
+                  {next && (
+                    <Link to={next.fields.slug} rel="next"
+                      css={css`
+                        text-decoration: none;
+                        color: #ffffff;
+                        font-family: 'Montserrat';
+                        font-weight: lighter;
+                        &:after{
+                            content: "";
+                            width: 0;
+                            display: block;
+                            position: relative;
+                            bottom: 6px;
+                            height: 4px;
+                            left: 100%;
+                            opacity: 1;
+                            background-color: #ffa039;
+                            transition: all .3s ease-in-out;
+                        }
+                        &:hover::after{
+                            width:100%;
+                            left:0;
+                        }
 
-</>
+  `}>
+                      {next.frontmatter.title.split(' ').slice(0, 5).join(' ') + ' . . .' } →
+                    </Link>
+                  )}
+                </li>
+              </ul>
+            </nav>
+          </Container>
+        </Content>
+      </MDXProvider>
+
+      {typeof post.tableOfContents.items === 'undefined' ? null : (
+        <TableOfContentsWrapper>
+          <TableOfContents>
+            <h2>Table of contents</h2>
+            {post.tableOfContents.items.map((v, i) => (
+              //TODO: Check for nested headers (which are arrays of objects)
+              <li key={v.url}
+                css={css`
+            display:flex;
+          `}
+              >
+                <a href={v.url} key={v.url}
+                  css={css`
+              text-decoration: none;
+              color: #ffffff;
+              padding:0rem 0.8rem;
+              font-weight:lighter;
+              &:after{
+                  content: "";
+                  width: 0;
+                  display: block;
+                  position: relative;
+                  bottom: 6px;
+                  height: 4px;
+                  left: 0;
+                  opacity: 1;
+                  background-color: #ffa039;
+                  transition: all .3s ease-in-out;
+              }
+              &:hover::after{
+                  width:100%;
+              }
+
+                          `}
+                >
+                  <span css={css`
+                          font-weight: bold;
+            `}>{i + 1}.</span> {v.title}
+                </a>
+              </li>
+            ))}
+          </TableOfContents>
+        </TableOfContentsWrapper>
+      )}
+
+    </>
 
 
   )

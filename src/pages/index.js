@@ -237,7 +237,7 @@ const Index = ({ data, location }) => {
                     text-decoration: none;
                     z-index:0;
                   `}>
-                      {node.frontmatter.title.split(' ').slice(0, 8).join(' ') + (node.frontmatter.title.split(' ').length > 5 ? '. . .' : '')}
+                      {node.frontmatter.title.split(' ').slice(0, 8).join(' ') + (node.frontmatter.title.split(' ').length > 5 ? ' . . .' : '')}
                     </h2>
                     <h3 css={css`
                       position: relative;
