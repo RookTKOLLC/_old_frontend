@@ -164,13 +164,14 @@ const BlogPostTemplate = ({ data, location }) => {
                           position: relative;
                           bottom: 6px;
                           height: 4px;
-                          left: 0.3rem;
+                          left: -0.3rem;
                           opacity: 1;
                           background-color: #ffa039;
                           transition: all .3s ease-in-out;
 
                       }
                   &:hover::after{
+                    left:0;
                       width: calc(100% - 24px);
                   }
 
@@ -264,7 +265,7 @@ const BlogPostTemplate = ({ data, location }) => {
                   css={css`
               text-decoration: none;
               color: #ffffff;
-              padding:0rem 0.8rem;
+              margin:0rem 0.8rem;
               font-weight:lighter;
               &:after{
                   content: "";
@@ -273,7 +274,7 @@ const BlogPostTemplate = ({ data, location }) => {
                   position: relative;
                   bottom: 6px;
                   height: 4px;
-                  left: -100%;
+                  left: -0.3rem;
                   opacity: 1;
                   background-color: #ffa039;
                   transition: all .3s ease-in-out;

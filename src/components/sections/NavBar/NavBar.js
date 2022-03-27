@@ -76,12 +76,13 @@ export default function NavBar() {
                                             position: relative;
                                             bottom: 6px;
                                             height: 4px;
-                                            left: 0;
+                                            left: -0.3rem;
                                             opacity: 1;
                                             background-color: #ffa039;
                                             transition: all .3s ease-in-out;
                                         }
                                     &:hover::after{
+                                        left:0;
                                         width:100%;
                                     }
 
