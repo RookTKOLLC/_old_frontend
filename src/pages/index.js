@@ -248,7 +248,8 @@ const Index = ({ data, location }) => {
 
                       
                   `}>
-                      {node.frontmatter.type}</h3>
+                      {node.frontmatter.type}
+                      </h3>
 
                   </heading>
 

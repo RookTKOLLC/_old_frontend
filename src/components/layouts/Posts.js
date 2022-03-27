@@ -10,6 +10,8 @@ import { MDXProvider } from "@mdx-js/react"
 import { MDXRenderer } from "gatsby-plugin-mdx"
 import { css, keyframes } from "@emotion/react"
 import { FullBleed } from '../sections/FullBleed'
+import { HiChevronRight } from '@react-icons/all-files/hi/HiChevronRight'
+import { HiChevronLeft } from '@react-icons/all-files/hi/HiChevronLeft'
 
 const Content = styled.main`
 min-height: calc(100vh - 150px);
@@ -154,7 +156,7 @@ const BlogPostTemplate = ({ data, location }) => {
                     <Link to={previous.fields.slug} rel="prev" css={css`
                       text-decoration: none;
                       color: #ffffff;
-                      font-family: 'Montserrat';
+                      transform: translateX(-24px);
                       &:after{
                           content: "";
                           width: 0;
@@ -162,22 +164,44 @@ const BlogPostTemplate = ({ data, location }) => {
                           position: relative;
                           bottom: 6px;
                           height: 4px;
-                          left: 0;
+                          left: 0.3rem;
                           opacity: 1;
                           background-color: #ffa039;
                           transition: all .3s ease-in-out;
+
                       }
                   &:hover::after{
-                      width:100%;
+                      width: calc(100% - 24px);
                   }
 
-  `}>
-                      ← {previous.frontmatter.title.split(' ').slice(0, 5).join(' ') + ' . . .'}
+                `}>
+                      <span css={css`
+                      transform:translateY(10%);
+                      display: inline-block;
+                      transition: transform .3s ease-in-out;
+                    `}>
+                        <HiChevronLeft />
+                        <HiChevronLeft css={css`
+                      transform: translateX(-12px);
+                    `} />
+                        <HiChevronLeft css={css`
+                      transform: translateX(-24px);
+                    `} />
+                      </span>
+                      <span css={css`
+                            transform: translateX(-24px);
+                            display: inline-block;
+                            font-family: 'Montserrat';
+                      `}>
+                        {previous.frontmatter.title.split(' ').slice(0, 5).join(' ') + ' . . .'}
+
+                      </span>
                     </Link>
                   )}
                 </li>
                 <li>
                   {next && (
+                    //TODO FIX ANIMATION
                     <Link to={next.fields.slug} rel="next"
                       css={css`
                         text-decoration: none;
@@ -197,12 +221,25 @@ const BlogPostTemplate = ({ data, location }) => {
                             transition: all .3s ease-in-out;
                         }
                         &:hover::after{
-                            width:100%;
+                            width:calc(100% - 24px);
                             left:0;
                         }
 
   `}>
-                      {next.frontmatter.title.split(' ').slice(0, 5).join(' ') + ' . . .' } →
+                      {next.frontmatter.title.split(' ').slice(0, 5).join(' ') + ' . . .'}
+                      <span css={css`
+                      transform:translateY(10%);
+                      display: inline-block;
+                      transition: transform .3s ease-in-out;
+                    `}>
+                        <HiChevronRight />
+                        <HiChevronRight css={css`
+                      transform: translateX(-12px);
+                    `} />
+                        <HiChevronRight css={css`
+                      transform: translateX(-24px);
+                    `} />
+                      </span>
                     </Link>
                   )}
                 </li>
@@ -236,13 +273,14 @@ const BlogPostTemplate = ({ data, location }) => {
                   position: relative;
                   bottom: 6px;
                   height: 4px;
-                  left: 0;
+                  left: -100%;
                   opacity: 1;
                   background-color: #ffa039;
                   transition: all .3s ease-in-out;
               }
               &:hover::after{
                   width:100%;
+                  left: 0;
               }
 
                           `}
