@@ -9,6 +9,8 @@ import { css } from '@emotion/react'
 import { HamburgerMenu } from '../sections/HamburgerMenu/HamburgerMenu'
 import BackgroundImage from '../../media/images/polygon-scatter-haikei.svg'
 import ProgressBar from '../sections/ProgressBar/ProgressBar'
+import ThemeToggle from '../sections/themeToggle'
+
 
 const Content = styled.main`
   min-height: calc(100vh - 150px);
@@ -97,9 +99,16 @@ const MainLayout = ({ children }) => {
         <NavBar />
         <SocialMediaNav />
         <ProgressBar />
+        <p>Test <ThemeToggle/></p>
+        <h1         style={{
+          backgroundColor: 'var(--bg)',
+          color: 'var(--textNormal)',
+          transition: 'color 0.2s ease-out, background 0.2s ease-out',
+        }}>Hello</h1>
       </>
       : <HamburgerMenu /> }
       <Content>
+
         {children}
       </Content>
       <Footer />

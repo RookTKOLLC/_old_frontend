@@ -1,11 +1,13 @@
 /** @jsx jsx */
-import { jsx } from "theme-ui"
+import { jsx, useTheme } from '@emotion/react'
 import React, { useEffect, useState } from 'react'
 import styled from '@emotion/styled'
 import { css, keyframes } from "@emotion/react"
 import { Link } from 'gatsby'
 import Logo from '../../../media/images/RookTKO.png'
 import { StaticImage } from "gatsby-plugin-image"
+
+
 
 const NavBarContainer = styled.section`
     background-color: #171717;
@@ -43,22 +45,13 @@ const NavBarLinks = styled.ul`
 
 
 export default function NavBar() {
-
+    const theme = useTheme()
     const navItems = ['Games', 'DevBlog', 'Swag'] //this needs to be fixed for mobile //
 
     return (
         <NavWrapper >
             <NavBarContainer>
                 <NavBarLinks>
-                    {/* <span       sx={{
-        // this uses the value from `theme.space[4]`
-        padding: 4,
-        // these use values from `theme.colors`
-        color: "background",
-        backgroundColor: "primary",
-      }}>
-                        sassas
-                    </span> */}
                     {navItems.map((value, idx) =>
                         <li
                             key={idx}
