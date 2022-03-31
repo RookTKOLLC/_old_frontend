@@ -1,5 +1,7 @@
 * {
     font-family: "Fira Sans Condensed";
+    letter-spacing: 0.04rem;
+    word-spacing: 0.1rem;
   }
   h1,h2,h3,h4,h5,h6 {
     font-family: 'Montserrat'
