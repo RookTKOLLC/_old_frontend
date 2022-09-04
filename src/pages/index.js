@@ -185,12 +185,12 @@ const Index = ({ data, location }) => {
                   css={css`
                   &:before{
                     background-origin: padding-box;
-                    background-color: white;
                     background: linear-gradient(0deg, rgba(0,0,0, 0.9) 15%,  rgba(0,0,0, 0) 100%), url(${node.frontmatter.headingImage.publicURL});
                     -webkit-mask-image:-webkit-gradient(linear, left top, left bottom, from(rgba(0,0,0,1)), to(rgba(0,0,0,0)));
                     mask-image: linear-gradient(to bottom, rgba(0,0,0,1), rgba(0,0,0,0));
                     background-position: center;
                     background-size: cover;
+                    border-radius: 8px;
                     background-repeat: no-repeat;
                     content:"";
                     top:0px;
@@ -205,6 +205,7 @@ const Index = ({ data, location }) => {
                   }
 
                     &:hover::before{
+                      border-radius: 0px;
                       top:3px;
                       left: 3px;
                       right: 3px;
@@ -245,7 +246,7 @@ const Index = ({ data, location }) => {
                       padding-left: 2rem;
                       padding-right: 0.2rem;
                       margin: 0rem;
-
+                      color: var(--text);
                       
                   `}>
                       {node.frontmatter.type}
@@ -256,7 +257,7 @@ const Index = ({ data, location }) => {
 
 
                   <p css={css`
-                    color: #999999;
+                    color: var(--text-secondary);
                     margin: 0rem;
                     position: relative;
                     //top: -1rem;
@@ -269,6 +270,7 @@ const Index = ({ data, location }) => {
                   padding: 0.2rem 2rem  2rem;
                   margin:0px;
                   position: relative;
+                  color: var(--text);
                 `}>{node.excerpt}
                     <br />
                     <span css={css`
@@ -276,7 +278,7 @@ const Index = ({ data, location }) => {
                     `}>
                     <span  css={css`
                             text-decoration: none;
-                            color: #ffffff;
+                            color: var(--text);
                             font-family: 'Montserrat';
                             transition: color .3s ease-in-out;
                             &:after{

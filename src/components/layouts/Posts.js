@@ -64,13 +64,13 @@ const BlogPostTemplate = ({ data, location }) => {
                   text-align: center;
                   background-origin: padding-box;
                   background-color: white;
-                  background: linear-gradient(0deg, rgba(0,0,0, 0.9) 15%,  rgba(0,0,0, 0) 100%), url(${post.frontmatter.headingImage.publicURL});
-                  -webkit-mask-image:-webkit-gradient(linear, left top, left bottom, from(rgba(0,0,0,1)), to(rgba(0,0,0,0)));
+                  background: var(--bg-fullbleed-linear-gradient), url(${post.frontmatter.headingImage.publicURL});
                   mask-image: linear-gradient(to bottom, rgba(0,0,0,1), rgba(0,0,0,0));
                   background-position: center;
                   background-size: cover;
                   background-repeat: no-repeat;
-                  text-shadow: 1px 1px 1px #824708, 3px 3px 5px #7F501C; 
+                  font-weight: 900;
+                  text-shadow: var(--text-shadow);
                   margin-bottom: -15rem;
           `}>
               <section css={css`
@@ -79,7 +79,7 @@ const BlogPostTemplate = ({ data, location }) => {
                 <Link to={post.fields.slug}
                   css={css` 
                 //padding: 0rem 1rem;
-                  color: white; 
+                  color: var(--text); 
                   text-decoration: none;
                   position: relative;
                   overflow: hidden;
@@ -90,7 +90,7 @@ const BlogPostTemplate = ({ data, location }) => {
                     box-decoration-break: clone;
                   }
                   &:hover{
-                      color:white; 
+                      color:var(--text); 
                       background: #ffa039;
                       p{
                           span{
@@ -108,7 +108,7 @@ const BlogPostTemplate = ({ data, location }) => {
                   <h1
                     css={css`
                   display:inline;   
-                  text-shadow: 1px 1px 1px #824708, 3px 3px 5px #7F501C; 
+                  text-shadow: var(--text-shadow);
                   padding: 0px 1rem 0px 1rem;
               `}>{post.frontmatter.title}</h1><br /> <br />
                   <span>Last Edit: {post.frontmatter.date}</span> <br />
@@ -135,6 +135,7 @@ const BlogPostTemplate = ({ data, location }) => {
         </header> */}
             <article css={css`
             z-index:1;
+            color:var(--text); 
           `}>
               <MDXRenderer >{post.body}</MDXRenderer>
             </article>
@@ -155,7 +156,7 @@ const BlogPostTemplate = ({ data, location }) => {
                   {previous && (
                     <Link to={previous.fields.slug} rel="prev" css={css`
                       text-decoration: none;
-                      color: #ffffff;
+                      color: var(--text); 
                       transform: translateX(-24px);
                       &:after{
                           content: "";
@@ -206,7 +207,7 @@ const BlogPostTemplate = ({ data, location }) => {
                     <Link to={next.fields.slug} rel="next"
                       css={css`
                         text-decoration: none;
-                        color: #ffffff;
+                        color: var(--text); 
                         font-family: 'Montserrat';
                         font-weight: lighter;
                         &:after{
@@ -253,7 +254,9 @@ const BlogPostTemplate = ({ data, location }) => {
       {typeof post.tableOfContents.items === 'undefined' ? null : (
         <TableOfContentsWrapper>
           <TableOfContents>
-            <h2>Table of contents</h2>
+            <h2 css={css`
+              color: var(--text); 
+            `}>Table of contents</h2>
             {post.tableOfContents.items.map((v, i) => (
               //TODO: Check for nested headers (which are arrays of objects)
               <li key={v.url}
@@ -264,7 +267,7 @@ const BlogPostTemplate = ({ data, location }) => {
                 <a href={v.url} key={v.url}
                   css={css`
               text-decoration: none;
-              color: #ffffff;
+              color: var(--text); 
               margin:0rem 0.8rem;
               font-weight:lighter;
               &:after{

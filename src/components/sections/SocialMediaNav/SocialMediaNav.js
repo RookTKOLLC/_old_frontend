@@ -12,12 +12,12 @@ import { GrLinkedin } from '@react-icons/all-files/gr/GrLinkedin'
 // import { IconContext } from "react-icons";
 import {RiMoonClearLine} from '@react-icons/all-files/ri/RiMoonClearLine'
 import {FaSun} from '@react-icons/all-files/fa/FaSun'
-
+import { ThemeToggler } from 'gatsby-plugin-dark-mode'
 
 function SocialMediaNav() {
     const [distanceFromTop, setDistanceFromTop] = useState(0)
     const [animationComplete, setAnimationComplete] = useState(false)
-    const [toggle, setToggle] = useState(false)
+
 
 
 
@@ -151,8 +151,27 @@ function SocialMediaNav() {
                     <SocialLinks><a href=""><ImSteam /></a></SocialLinks>
                     <SocialLinks><a href=""><FaItchIo /></a></SocialLinks>
                     <SocialLinks><a href=""><GrLinkedin /></a></SocialLinks> */}
-                    <FaSun />
-                    <RiMoonClearLine />
+                    <SocialLinks>
+                    <ThemeToggler>
+                        {({ theme, toggleTheme }) => {
+                            if (theme == null) return null
+                            console.log('theme', theme)
+                            if(theme == 'light'){
+                                return(
+                                    <FaSun onClick={() => {
+                                        toggleTheme('dark')
+                                        }
+                                    } />
+                                )
+                            }
+                            return(
+                                <RiMoonClearLine onClick={() => {
+                                    toggleTheme('light')
+                                    }
+                                } />
+                            )
+                        }}
+                    </ThemeToggler></SocialLinks>
                 </ul>
             </SocialMediaIcons>
         </SocialWrapper>

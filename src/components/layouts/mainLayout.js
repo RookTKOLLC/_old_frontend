@@ -86,8 +86,8 @@ const MainLayout = ({ children }) => {
 // //{data.site.siteMetadata.title}
   return (
     <section css={css`
-        background-color: #111010;
-        background-image: linear-gradient(0deg, rgba(7, 7, 6,0.95) 10%,  rgba(47, 46, 45,0.55) 100%), url(${BackgroundImage});
+        background-color: var(--bg);
+        background-image: var(--bg-linear-gradient), url(${BackgroundImage});
         background-position: -10% -15%;
         background-repeat: repeat;
         background-size: auto;
@@ -99,16 +99,9 @@ const MainLayout = ({ children }) => {
         <NavBar />
         <SocialMediaNav />
         <ProgressBar />
-        <p>Test <ThemeToggle/></p>
-        <h1         style={{
-          backgroundColor: 'var(--bg)',
-          color: 'var(--textNormal)',
-          transition: 'color 0.2s ease-out, background 0.2s ease-out',
-        }}>Hello</h1>
       </>
       : <HamburgerMenu /> }
       <Content>
-
         {children}
       </Content>
       <Footer />
