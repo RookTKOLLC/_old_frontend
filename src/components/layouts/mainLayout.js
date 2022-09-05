@@ -10,7 +10,7 @@ import { HamburgerMenu } from '../sections/HamburgerMenu/HamburgerMenu'
 import BackgroundImage from '../../media/images/polygon-scatter-haikei.svg'
 import ProgressBar from '../sections/ProgressBar/ProgressBar'
 import ThemeToggle from '../sections/themeToggle'
-
+import { Spiral as Hamburger } from 'hamburger-react'
 
 const Content = styled.main`
   min-height: calc(100vh - 150px);

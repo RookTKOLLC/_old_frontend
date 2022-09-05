@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { css, keyframes } from "@emotion/react";
 import styled from "@emotion/styled";
 import { Link } from "gatsby";
-import { Sling as Hamburger } from "hamburger-react";
+import { Spiral as Hamburger } from 'hamburger-react'
 
 export const HamburgerMenu = () => {
   const [showMenu, setShowMenu] = useState(false);
@@ -96,7 +96,7 @@ export const HamburgerMenu = () => {
           color: white;
           height: 100vh;
           width: 100vw;
-          top: -95vh;
+          top: -98vh;
           ${!showMenu &&
           css`
             opacity: 0;
