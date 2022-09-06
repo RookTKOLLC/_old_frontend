@@ -73,8 +73,8 @@ export const HamburgerMenu = () => {
       <div
         onClick={onClickHandler}
         css={css`
-          width: 4rem;
-          height: 4rem;
+          width: 2rem;
+          height: 2rem;
           top: -0.5rem;
           padding: 1rem 0.5rem 0.2rem;
           left: 1rem;
