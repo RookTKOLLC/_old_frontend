@@ -19,10 +19,6 @@ function SocialMediaNav() {
     const [animationComplete, setAnimationComplete] = useState(false)
 
 
-
-
-    {/* TODO: On initial load bounce down socialmedianav and fix css for it */ }
-
     useEffect(() => {
         let root = document.documentElement
         let socialNavBar = document.getElementsByClassName("socialNav")[0];
@@ -147,10 +143,10 @@ function SocialMediaNav() {
                     <SocialLinks><a href="https://example.com" target="_blank" rel="noopener noreferrer"><FaFacebookSquare /></a></SocialLinks>
                     <SocialLinks><a href=""><FaTwitter /></a></SocialLinks>
                     <SocialLinks><a href=""><FiInstagram /> </a></SocialLinks>
-                    {/* <SocialLinks><a href=""><SiTiktok /> </a></SocialLinks>
+                    <SocialLinks><a href=""><SiTiktok /> </a></SocialLinks>
                     <SocialLinks><a href=""><ImSteam /></a></SocialLinks>
                     <SocialLinks><a href=""><FaItchIo /></a></SocialLinks>
-                    <SocialLinks><a href=""><GrLinkedin /></a></SocialLinks> */}
+                    <SocialLinks><a href=""><GrLinkedin /></a></SocialLinks>
                     <SocialLinks>
                     <ThemeToggler>
                         {({ theme, toggleTheme }) => {

@@ -27,7 +27,7 @@
     --textTitle: #222;
     --textLink: blue;
     --hr: hsla(0, 0%, 0%, 0.2); */
-    --bg-linear-gradient: linear-gradient(0deg, rgba(7, 7, 6,0.45) 1%,  rgba(255, 255, 255,0.25) 50%);
+    --bg-linear-gradient: linear-gradient(0deg, rgba(7, 7, 6, 0.35) 1%,  rgba(255, 255, 255,0.25) 50%);
     --bg-fullbleed-linear-gradient: linear-gradient(0deg, rgba(255, 255, 255, 0.8) 20%,  rgb(255, 246, 231,0.5) 100%);
     --text: #000000;
     --text-shadow: 1px 1px 1px #ffffff, 3px 3px 5px #ffffff; 
