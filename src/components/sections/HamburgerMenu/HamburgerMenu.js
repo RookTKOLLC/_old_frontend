@@ -213,6 +213,7 @@ export const HamburgerMenu = () => {
             <ul
               css={css`
                 font-size: 1.4rem;
+                padding: 0;
               `}
             >
               <SocialLinks>
@@ -247,11 +248,6 @@ export const HamburgerMenu = () => {
               <SocialLinks>
                 <a href="">
                   <FaItchIo />
-                </a>
-              </SocialLinks>
-              <SocialLinks>
-                <a href="">
-                  <GrLinkedin />
                 </a>
               </SocialLinks>
               <SocialLinks>
