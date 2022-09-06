@@ -33,7 +33,7 @@ export const HamburgerMenu = () => {
   const SocialMediaIcons = styled.section`
     // background-color: rgba(244, 130, 37, 0.7);
     position: absolute;
-    bottom: 0px;
+    bottom: 15%;
     width: 100%;
     ul {
       margin-top: 0;
@@ -43,7 +43,7 @@ export const HamburgerMenu = () => {
     }
     ol {
       margin: 0;
-      padding: 0px 1rem;
+      padding: 0px 0.25rem;
     }
     ol a {
       color: white;
