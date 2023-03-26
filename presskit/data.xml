@@ -1,0 +1,141 @@
+<?xml version="1.0" encoding="utf-8"?>
+<company>
+  <title>RookTKO</title>
+  <based-in>Washington, USA</based-in>
+  <founding-date>22 June 2020</founding-date>
+  <website>https://www.rooktko.com/</website>
+  <press-contact>
+    contact@rooktko.com
+  </press-contact>
+
+  <!-- Google analytics ID: -->
+  <analytics></analytics>
+
+  <phone></phone>
+  <address>
+    <line>
+      6018 51st ST NE
+    </line>
+    <line>
+      Marysville, WA 98270
+    </line>
+    <line>
+      United States of America
+    </line>
+  </address>
+
+  <socials>
+    <social>
+      <name>LinkedIn</name>
+      <link>
+        https://www.linkedin.com/company/rooktko/
+      </link>
+      <name>Facebook</name>
+      <link>
+        https://www.facebook.com/RookTakesKingOut/
+      </link>
+      <name>Twitter</name>
+      <link>
+        https://twitter.com/rooktko/
+      </link>
+      <name>Instagram</name>
+      <link>
+        https://www.instagram.com/rooktko/
+      </link>
+      <name>TikTok</name>
+      <link>
+        https://www.tiktok.com/@rook_tko
+      </link>
+      <name>Itch.io</name>
+      <link>
+        https://rooktkollc.itch.io/
+      </link>
+    </social>
+  </socials>
+
+  <description>
+    RookTKO (Rook Takes King Out), is a veteran owned independent video game company that is working on two flagship games, GemCore and RNR. The motto we try to strive for is that we are "Engineering experiences for humans by humans".
+  </description>
+
+  <!-- Choose between a single block: -->
+  <histories>
+      <history>
+      <header>Conception</header>
+      <text>RookTKO is a game development company that was founded by Olaf Minkowicz in the midst of the COVID-19 pandemic in mid-2020. Minkowicz, who had previously been working intermittently on a game called RNR with lead artist Leona Clarc since around 2015, saw an opportunity to create a new company that focused on high-quality games with a focus on game feel. This led to the birth of RookTKO, which is now working on two procedurally generated roguelite games: RNR and GemCore.</text>
+    </history>
+    <history>
+      <header>Development</header>
+      <text>RNR has been in development for several years and is still being actively worked on. The team is currently aiming for an early access release in the fourth quarter of 2024. GemCore, on the other hand, began development in early 2023. Both games are being developed using Game Maker Studio/Game Maker 2, but they have distinct differences that set them apart from one another.</text>
+    </history>
+    <history>
+      <header>The Organization</header>
+      <text>RookTKO is composed of a diverse group of contractors from all over the world, with the original soundtracks for both games being created by Deva Hanna, also known as ZNO. The team is dedicated to creating high-quality games that focus on game feel above all else, and they are committed to selling these games at a low price point through their Gumball initiatives. Under this initiative, all games will be released on early access at the low price of 2.50 USD and then be moved up to 5 dollars on full release.</text>
+      </history>
+  </histories>
+
+  <!--
+
+  <trailers>
+    <trailer>
+      <name></name>
+
+      <youtube>
+         Video ID only, not the full URL 
+      </youtube>
+
+    </trailer>
+  </trailers>
+
+  <awards>
+    <award>
+      <description></description>
+      <info></info>
+    </award>
+  </awards>
+
+  <quotes>
+    <quote>
+      <description></description>
+      <name></name>
+      <website></website>
+      <link></link>
+    </quote>
+  </quotes>
+
+  <additionals>
+    <additional>
+      <title></title>
+      <description></description>
+      <link></link>
+    </additional>
+  </additionals>
+-->
+  <credits>
+    <credit>
+      <person>Olaf Minkowicz</person>
+      <role>Founder, Developer, Game Designer</role>
+      <website>https://olminkow.com/</website>
+    </credit>
+    <credit>
+      <person>Leona Clarc</person>
+      <role>Pixel Artist</role>
+    </credit>
+    <credit>
+      <person>MAWV</person>
+      <role>Pixel Artist, Game Designer</role>
+      <website>https://mattdomain.carrd.co/</website>
+    </credit>
+    <credit>
+      <person>Deva Hanna</person>
+      <role>Composer</role>
+    </credit>
+  </credits>
+
+  <contacts>
+    <contact>
+      <name>Inquiries</name>
+      <mail>contact@rooktko.com</mail>
+    </contact>
+  </contacts>
+
+</company>
