@@ -140,18 +140,17 @@ function SocialMediaNav() {
                     font-size: 1.4rem;
                     padding-right: 1rem;
                 `}>
-                    <SocialLinks><a href="https://example.com" target="_blank" rel="noopener noreferrer"><FaFacebookSquare /></a></SocialLinks>
-                    <SocialLinks><a href=""><FaTwitter /></a></SocialLinks>
-                    <SocialLinks><a href=""><FiInstagram /> </a></SocialLinks>
-                    <SocialLinks><a href=""><SiTiktok /> </a></SocialLinks>
-                    <SocialLinks><a href=""><ImSteam /></a></SocialLinks>
-                    <SocialLinks><a href=""><FaItchIo /></a></SocialLinks>
-                    <SocialLinks><a href=""><GrLinkedin /></a></SocialLinks>
+                    <SocialLinks><a href="https://www.facebook.com/RookTakesKingOut/" target="_blank" rel="noopener noreferrer"><FaFacebookSquare /></a></SocialLinks>
+                    <SocialLinks><a href="https://twitter.com/RookTKO" target="_blank" rel="noopener noreferrer"><FaTwitter /></a></SocialLinks>
+                    <SocialLinks><a href="https://www.instagram.com/rooktko/" target="_blank" rel="noopener noreferrer"><FiInstagram /> </a></SocialLinks>
+                    <SocialLinks><a href="https://www.tiktok.com/@rook_tko" target="_blank" rel="noopener noreferrer"><SiTiktok /> </a></SocialLinks>
+                    <SocialLinks><a href="https://store.steampowered.com/search/?developer=RookTKO" target="_blank" rel="noopener noreferrer"><ImSteam /></a></SocialLinks>
+                    <SocialLinks><a href="https://rooktkollc.itch.io/" target="_blank" rel="noopener noreferrer"><FaItchIo /></a></SocialLinks>
+                    <SocialLinks><a href="https://www.linkedin.com/company/rooktko" target="_blank" rel="noopener noreferrer"><GrLinkedin /></a></SocialLinks>
                     <SocialLinks>
                     <ThemeToggler>
                         {({ theme, toggleTheme }) => {
                             if (theme == null) return null
-                            console.log('theme', theme)
                             if(theme == 'light'){
                                 return(
                                     <FaSun onClick={() => {

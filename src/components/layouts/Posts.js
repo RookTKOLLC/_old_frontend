@@ -46,7 +46,6 @@ const BlogPostTemplate = ({ data, location }) => {
   const post = data.mdx
   const siteTitle = data.site.siteMetadata?.title || `Title`
   const { previous, next } = data
-  console.log('data.mdx', data)
   return (
     // <Layout location={location} title={siteTitle}>
     //   <Seo

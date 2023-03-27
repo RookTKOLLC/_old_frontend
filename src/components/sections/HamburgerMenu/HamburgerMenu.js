@@ -254,7 +254,6 @@ export const HamburgerMenu = () => {
                 <ThemeToggler>
                   {({ theme, toggleTheme }) => {
                     if (theme == null) return null;
-                    console.log("theme", theme);
                     if (theme == "light") {
                       return (
                         <FaSun

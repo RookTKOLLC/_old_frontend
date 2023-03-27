@@ -88,12 +88,10 @@ const HeroSelection = styled.div`
 
 
 const Index = ({ data, location }) => {
-  console.log('index data', data)
   //const siteTitle = data.site.siteMetadata?.title || `Title`
   const posts = data.allMdx.nodes
   const featuredArticles = posts.filter((node) => node.frontmatter.featured);
   const nonFeaturedArticles = posts.filter((node) => !node.frontmatter.featured);
-  console.log('posts', posts)
   // if (posts.length === 0) {
   //   return (
   //     // <Layout location={location} title={siteTitle}>
@@ -250,7 +248,7 @@ const Index = ({ data, location }) => {
                       
                   `}>
                       {node.frontmatter.type}
-                      </h3>
+                    </h3>
 
                   </heading>
 
@@ -276,7 +274,7 @@ const Index = ({ data, location }) => {
                     <span css={css`
                       display: inline-block;
                     `}>
-                    <span  css={css`
+                      <span css={css`
                             text-decoration: none;
                             color: var(--text);
                             font-family: 'Montserrat';
@@ -299,22 +297,22 @@ const Index = ({ data, location }) => {
                         &:hover{
                           color: #ffa039;
                         }
-                    `}>Read More 
-                    <span css={css`
+                    `}>Read More
+                        <span css={css`
                       transform:translateY(10%);
                       display: inline-block;
                       transition: transform .3s ease-in-out;
                     `}>
-                    <HiChevronRight />
-                    <HiChevronRight css={css`
+                          <HiChevronRight />
+                          <HiChevronRight css={css`
                       transform: translateX(-12px);
-                    `}/>
-                    <HiChevronRight css={css`
+                    `} />
+                          <HiChevronRight css={css`
                       transform: translateX(-24px);
-                    `}/>
-                    </span>
-                     </span>
-                      
+                    `} />
+                        </span>
+                      </span>
+
                     </span>
 
                   </p>

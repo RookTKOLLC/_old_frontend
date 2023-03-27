@@ -60,8 +60,6 @@ const MainLayout = ({ children }) => {
   const observer = useRef(null);
   useEffect(() => {
       observer.current = new ResizeObserver((entries, idx) => {
-        console.log(entries);
-        console.log('this is borderbox', entries[0].borderBoxSize[0].inlineSize)
         if(entries[0].borderBoxSize[0].inlineSize <= 784){
           setMobileView(true)
         }else{

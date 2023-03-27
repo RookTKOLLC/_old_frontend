@@ -1,50 +1,65 @@
 * {
-    font-family: "Fira Sans Condensed";
-    letter-spacing: 0.04rem;
-    word-spacing: 0.1rem;
-  }
-  h1,h2,h3,h4,h5,h6 {
-    font-family: 'Montserrat'
-  }
-  body {
-    color: #fff
-  }
-  a{
-    transition: all .3s ease-in-out;
-    color: #ffa039
-  }
-  a:hover {
-    color: #ffa039
-  }
+  font-family: "Fira Sans Condensed";
+  letter-spacing: 0.04rem;
+  word-spacing: 0.1rem;
+}
 
-  a.anchor.before svg {
-    fill: #ffa039;
-  }
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: 'Montserrat'
+}
 
-  body {
-    --bg: white;
-    /* --textNormal: #222;
+body {
+  color: #fff
+}
+
+a {
+  transition: all .3s ease-in-out;
+  color: #ffa039
+}
+
+a:hover {
+  color: #ffa039
+}
+
+a.anchor.before svg {
+  fill: #ffa039;
+}
+
+body {
+  --bg: white;
+  /* --textNormal: #222;
     --textTitle: #222;
     --textLink: blue;
     --hr: hsla(0, 0%, 0%, 0.2); */
-    --bg-linear-gradient: linear-gradient(0deg, rgba(7, 7, 6, 0.35) 1%,  rgba(255, 255, 255,0.25) 50%);
-    --bg-fullbleed-linear-gradient: linear-gradient(0deg, rgba(255, 255, 255, 0.8) 20%,  rgb(255, 246, 231,0.5) 100%);
-    --text: #000000;
-    --text-shadow: 1px 1px 1px #ffffff, 3px 3px 5px #ffffff; 
-    --text-secondary: #2d2d2d;
-  }
-  
-  body.dark {
-    -webkit-font-smoothing: antialiased;
-  
-    --bg: rgb(17, 16, 16);
-    --bg-linear-gradient: linear-gradient(0deg, rgba(7, 7, 6,0.95) 10%,  rgba(47, 46, 45,0.55) 100%);
-    --bg-fullbleed-linear-gradient: linear-gradient(0deg, rgba(0,0,0, 0.9) 15%,  rgba(0,0,0, 0) 100%);
-    --text: #ffffff;
-    --text-shadow: 1px 1px 1px #824708, 3px 3px 5px #7F501C; 
-    --text-secondary: #999999;
-    /* --textNormal: rgba(255, 255, 255, 0.88);
+  --bg-linear-gradient: linear-gradient(0deg, rgba(7, 7, 6, 0.35) 1%, rgba(255, 255, 255, 0.25) 50%);
+  --bg-fullbleed-linear-gradient: linear-gradient(0deg, rgba(255, 255, 255, 0.8) 20%, rgb(255, 246, 231, 0.5) 100%);
+  --text: #000000;
+  --text-shadow: 1px 1px 1px #ffffff, 3px 3px 5px #ffffff;
+  --text-secondary: #2d2d2d;
+}
+
+body.dark {
+  -webkit-font-smoothing: antialiased;
+
+  --bg: rgb(17, 16, 16);
+  --bg-linear-gradient: linear-gradient(0deg, rgba(7, 7, 6, 0.95) 10%, rgba(47, 46, 45, 0.55) 100%);
+  --bg-fullbleed-linear-gradient: linear-gradient(0deg, rgba(0, 0, 0, 0.9) 15%, rgba(0, 0, 0, 0) 100%);
+  --text: #ffffff;
+  --text-shadow: 1px 1px 1px #824708, 3px 3px 5px #7F501C;
+  --text-secondary: #999999;
+  /* --textNormal: rgba(255, 255, 255, 0.88);
     --textTitle: white;
     --textLink: yellow;
     --hr: hsla(0, 0%, 100%, 0.2); */
-  }
+}
+
+html,
+body {
+  width: 100%;
+  height: 100%;
+}
